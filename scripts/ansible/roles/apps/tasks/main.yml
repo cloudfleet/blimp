@@ -1,0 +1,14 @@
+---
+- name: apps | install docker containers
+  sudo: yes
+  docker: 
+    image: "{{item.value.image}}"
+    name: "{{item.key}}"
+    links: item.dependencies
+    volumes: 
+      - "/opt/cloudfleet/apps/{{ item.key }}/data:/opt/cloudfleet/data"
+      - "/opt/cloudfleet/apps/{{ item.key }}/log:/opt/cloudfleet/log"
+    ports:
+      - "127.0.0.1:{{ item.value.port }}:80
+  with_dict: apps
+

@@ -1,0 +1,7 @@
+---
+- name: services | install postgres
+  sudo: yes
+  docker: 
+    image: postgres
+    name: blimp-postgres
+

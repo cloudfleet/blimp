@@ -1,0 +1,5 @@
+---
+- name: install nginx
+  apt: pkg=nginx state=present
+- name: start nginx
+  service: name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes

@@ -1,0 +1,18 @@
+---
+- name: setup pagekite repository
+  sudo: yes
+  apt_repository: repo='deb http://pagekite.net/pk/deb/ pagekite main' state=present
+
+- name: get repository key for pagekite
+  sudo: yes
+  command: apt-key adv --recv-keys --keyserver keys.gnupg.net AED248B1C7B2CAC3
+
+- name: install pagekite
+  sudo: yes
+  apt: pkg={{ item }} state=present update_cache=yes
+  with_items:
+    - python-software-properties
+    - python
+    - g++
+    - make
+    - pagekite
