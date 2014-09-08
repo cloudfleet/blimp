@@ -1,7 +1,6 @@
 ---
-- name: defined apps
-  debug: var=apps
-  
-- name: setup nginx
-  
+- name: create config directory
+  file: path=/opt/cloudfleet/conf/nginx state=directory
+- name: setup nginx proxies
+  template: src=nginx_app_snippet.conf dest="/opt/cloudfleet/conf/nginx/apps.conf"
 

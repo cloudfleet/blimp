@@ -1,5 +1,7 @@
 ---
-- name: install postgres
+- name: start nginx
+  service: name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
+- name: start postgres container
   sudo: yes
   docker: 
     image: postgres
