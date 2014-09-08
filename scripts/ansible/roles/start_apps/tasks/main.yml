@@ -1,14 +1,15 @@
 ---
-
 - name: apps | install docker containers
   sudo: yes
   docker: 
+    state: running
+    hostname: "{{item.key}}"
     image: "{{item.value.image}}"
     name: "{{item.key}}"
-    links: item.dependencies
+    links: "{{item.value.dependencies|default('postgres')}}"
     volumes: 
-      - "/opt/cloudfleet/apps/{{ item.key }}/data:/opt/cloudfleet/data"
-      - "/opt/cloudfleet/apps/{{ item.key }}/log:/opt/cloudfleet/log"
+      - "/opt/cloudfleet/apps/{{item.key}}/data:/opt/cloudfleet/data"
+      - "/opt/cloudfleet/apps/{{item.key}}/log:/opt/cloudfleet/log"
     ports:
-      - "127.0.0.1:{{ item.value.port }}:80"
+      - "127.0.0.1:{{item.value.port}}:80"
   with_dict: apps

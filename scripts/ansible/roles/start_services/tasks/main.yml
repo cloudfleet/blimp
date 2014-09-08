@@ -4,6 +4,7 @@
 - name: start postgres container
   sudo: yes
   docker: 
+    hostname: postgres
     image: postgres
-    name: blimp-postgres
+    name: postgres
 

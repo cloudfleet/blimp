@@ -3,9 +3,8 @@ apps:
   musterroll:
     friendly_name: User Management
     location: musterroll
-    image: cloudfleet/blimp-musterroll
+    image: doublemalt/blimp-musterroll
     port: 10001
-    dependencies: 
     storage: 
       - filesystem
 

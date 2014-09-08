@@ -2,8 +2,13 @@
   sudo: yes
   vars_files:
     - apps.yml
+  
 
   roles:
+    - pagekite
+    - nginx
+    - docker
+    - apps
     - start_services
     - start_apps
 
