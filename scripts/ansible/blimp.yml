@@ -1,9 +1,12 @@
 - hosts: all
   sudo: yes
+  vars_files:
+    - apps.yml
+  
 
   roles:
     - pagekite
-    - apache
-    - postgres
-    - owncloud
-    - cockpit
+    - nginx
+    - docker
+    - apps
+

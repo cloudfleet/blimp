@@ -1,5 +1,5 @@
 ---
-- name: services | install postgres
+- name: install postgres
   sudo: yes
   docker: 
     image: postgres
