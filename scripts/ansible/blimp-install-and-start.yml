@@ -2,6 +2,7 @@
   sudo: yes
   vars_files:
     - apps.yml
+    - cloudfleet-test.yml
   
 
   roles:
