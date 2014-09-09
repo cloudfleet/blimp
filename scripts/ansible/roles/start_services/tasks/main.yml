@@ -1,6 +1,13 @@
 ---
 - name: start nginx
   service: name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
+
+- name: configure pagekite
+  template: src=pagekite.conf dest=/etc/pagekite.d/10_account.rc
+
+- name: start pagekite
+  service: name=pagekite state=restarted
+
 - name: start postgres container
   sudo: yes
   docker: 
