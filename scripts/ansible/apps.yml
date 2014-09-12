@@ -7,4 +7,11 @@ apps:
     port: 10001
     storage: 
       - filesystem
+  cockpit:
+    friendly_name: Cockpit
+    location: ""
+    image: cloudfleet/blimp-cockpit
+    port: 10000
+    storage: 
+      - filesystem
 
