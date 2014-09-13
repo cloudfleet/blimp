@@ -3,6 +3,10 @@
   service: name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
 
 - name: configure pagekite
+  file: path=/etc/pagekite.d/20_frontends.rc state=absent
+
+
+- name: configure pagekite
   template: src=pagekite.conf dest=/etc/pagekite.d/10_account.rc
 
 - name: start pagekite
