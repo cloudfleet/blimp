@@ -8,5 +8,7 @@ ADD . /opt/cloudfleet/setup
 WORKDIR /opt/cloudfleet/setup
 RUN scripts/install.sh
 
-CMD scripts/start.sh
+CMD scripts/start-docker.sh
+VOLUME /var/lib/docker
+
 

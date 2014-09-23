@@ -11,10 +11,6 @@
   sudo: yes
   apt: pkg=lxc-docker state=present update_cache=yes
   
-- name: install pip
-  sudo: yes
-  apt: pkg=python-pip state=present
-  
 - name: install docker-py
   sudo: yes
   pip: name=docker-py state=present
