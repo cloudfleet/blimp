@@ -1,5 +1,5 @@
 ---
-- name: apps | install docker containers
+- name: run docker containers
   sudo: yes
   docker: 
     state: running
