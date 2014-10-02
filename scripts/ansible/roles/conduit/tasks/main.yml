@@ -1,0 +1,17 @@
+---
+- name: clone conduit
+  sudo: yes
+  git: repo=https://github.com/cloudfleet/conduit.git dest=/opt/cloudfleet/conduit
+  
+- name: install conduit requirements
+  sudo: yes
+  pip: requirements=/opt/cloudfleet/conduit/requirements.txt
+
+- name: creating conduit log directory
+  sudo: yes
+  file: path=/var/log/cloudfleet state=directory
+
+- name: copy supervisord config file
+  sudo: yes
+  copy: src=supervisor-conduit.conf dest=/etc/supervisor/conf.d/conduit.conf
+

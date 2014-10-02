@@ -1,4 +1,10 @@
 ---
+- name: start supervisod
+  service: name=supervisor state=started
+
+#- name: start conduit
+#  supervisorctl: name=conduit state=started
+
 - name: start nginx
   service: name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
 

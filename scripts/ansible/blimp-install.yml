@@ -8,5 +8,8 @@
     - pagekite
     - nginx
     - docker
+    - users
+    - supervisord
+    - conduit
     - apps
 

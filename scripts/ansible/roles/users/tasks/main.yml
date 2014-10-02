@@ -1,0 +1,5 @@
+- name: create cloudfleet user
+  user: name=cloudfleet shell=/bin/bash groups=docker append=yes
+
+- name: allow cloudfleet user to restart nginx
+  lineinfile: "dest=/etc/sudoers.d/cloudfleet-nginx.conf owner=root group=root mode=0440 line='cloudfleet ALL=(ALL) NOPASSWD: /usr/sbin/service nginx restart' state=present create=yes validate='visudo -cf %s'"

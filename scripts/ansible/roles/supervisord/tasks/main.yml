@@ -1,0 +1,5 @@
+---
+- name: install supervisord
+  sudo: yes
+  apt: pkg=supervisor state=present
+
