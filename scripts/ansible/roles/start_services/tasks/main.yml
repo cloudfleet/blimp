@@ -1,9 +1,18 @@
 ---
-- name: start supervisod
-  service: name=supervisor state=started
+- name: regather facts to read docker bridge ip address
+  action: setup
 
-#- name: start conduit
-#  supervisorctl: name=conduit state=started
+- name: unmount hosts file
+  command: "umount /etc/hosts"
+
+- name: add localhost to hosts file
+  lineinfile: "dest=/etc/hosts line='127.0.0.1 localhost' state=present"
+
+- name: add docker bridge to hosts file
+  lineinfile: "dest=/etc/hosts line='{{ansible_docker0.ipv4.address}} blimp-docker' state=present"
+
+- name: start supervisord
+  service: name=supervisor state=started
 
 - name: start nginx
   service: name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
