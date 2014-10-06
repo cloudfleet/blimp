@@ -10,6 +10,7 @@
     volumes: 
       - "/opt/cloudfleet/apps/{{item.key}}/data:/opt/cloudfleet/data"
       - "/opt/cloudfleet/apps/{{item.key}}/log:/opt/cloudfleet/log"
+      - "/etc/hosts:/etc/hosts"
     ports:
       - "127.0.0.1:{{item.value.port}}:80"
   with_dict: apps
