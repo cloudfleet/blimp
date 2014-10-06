@@ -11,14 +11,6 @@
   sudo: yes
   apt: pkg=lxc-docker state=present update_cache=yes
   
-    
-  
-- command: "ip addr"
-  register: ip_addr
-
-- debug: var=ip_addr.stdout_lines
-
-
 - name: install docker-py
   sudo: yes
   pip: name=docker-py state=present
