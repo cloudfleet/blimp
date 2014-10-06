@@ -20,7 +20,7 @@
 - name: start nginx
   service: name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
 
-- name: configure pagekite
+- name: configure pagekite - remove existing files
   file: path=/etc/pagekite.d/20_frontends.rc state=absent
 
 
