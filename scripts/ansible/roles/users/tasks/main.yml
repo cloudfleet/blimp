@@ -3,3 +3,9 @@
 
 - name: allow cloudfleet user to restart nginx
   lineinfile: "dest=/etc/sudoers.d/cloudfleet-nginx.conf owner=root group=root mode=0440 line='cloudfleet ALL=(ALL) NOPASSWD: /usr/sbin/service nginx restart' state=present create=yes validate='visudo -cf %s'"
+  
+- name: make cloudfleet group owner of /opt/cloudfleet/conf directory
+  file: path=/opt/cloudfleet/conf state=directory group=cloudfleet mode=0775
+  
+- name: make cloudfleet group owner of /opt/cloudfleet/conf/nginx directory
+  file: path=/opt/cloudfleet/conf/nginx state=directory group=cloudfleet mode=0775
