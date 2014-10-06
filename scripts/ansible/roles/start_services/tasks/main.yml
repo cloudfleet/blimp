@@ -6,7 +6,7 @@
   command: "umount /etc/hosts"
 
 - name: add localhost to hosts file
-  lineinfile: "dest=/etc/hosts line='127.0.0.1 localhost' state=present"
+  lineinfile: "dest=/etc/hosts line='127.0.0.1 localhost blimp' state=present"
 
 - name: add docker bridge to hosts file
   lineinfile: "dest=/etc/hosts line='{{ansible_docker0.ipv4.address}} blimp-docker' state=present"
