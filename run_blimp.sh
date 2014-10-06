@@ -6,5 +6,6 @@ sudo docker run --privileged -it \
   -e "CLOUDFLEET_HOST=blimpyard.cloudfleet.io:443" \
   --name "blimp_${1}" \
   --hostname "blimp" \
-  cloudfleet/blimp 
+  --rm=true \
+  cloudfleet/blimp
 
