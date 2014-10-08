@@ -37,3 +37,16 @@
     image: postgres
     name: postgres
 
+
+- name: start mailbox container
+  sudo: yes
+  docker:
+    hostname: blimp-mailbox
+    image: cloudfleet/blimp-mailbox
+    name: blimp-mailbox
+    volumes: 
+      - "/opt/cloudfleet/common/mails:/opt/cloudfleet/maildir"
+      - "/etc/hosts:/etc/hosts"
+    ports:
+      - "127.0.0.1:30001:3000"
+
