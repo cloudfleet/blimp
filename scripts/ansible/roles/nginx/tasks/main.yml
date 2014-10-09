@@ -11,5 +11,8 @@
 - name: link cloudfleet nginx config file
   file: src=/etc/nginx/sites-available/cloudfleet dest=/etc/nginx/sites-enabled/cloudfleet state=link
   
+- name: create cloudfleet config directory
+  file: path=/opt/cloudfleet/conf/nginx state=directory
+
 - name: add mailbox nginx config file
   copy: src=blimp-mailbox dest=/opt/cloudfleet/conf/nginx/blimp-mailbox.conf
