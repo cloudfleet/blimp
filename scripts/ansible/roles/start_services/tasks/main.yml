@@ -16,6 +16,12 @@
 
 - name: start supervisord
   service: name=supervisor state=started
+  
+- name: copy mail auth config file
+  template: src=mail-auth.conf dest=/etc/nginx/sites-enabled/mail-auth.conf
+  
+- name: copy smtp proxy config file
+  copy: src=smtp-proxy.conf dest=/opt/cloudfleet/conf/nginx-mail/smtp-proxy.conf
 
 - name: start nginx
   service: name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
