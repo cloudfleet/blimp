@@ -1,0 +1,21 @@
+- name: install nodejs stuff
+  apt: pkg={{ item }} state=present
+  with_items:
+    - nodejs-legacy
+    - npm
+
+- name: install haraka
+  npm: name=haraka state=present
+  
+- name: clone doveshed
+  sudo: yes
+  git: repo=https://github.com/cloudfleet/doveshed.git dest=/opt/cloudfleet/doveshed
+  
+- name: creating conduit log directory
+  sudo: yes
+  file: path=/var/log/cloudfleet state=directory
+
+- name: copy supervisord config file
+  sudo: yes
+  copy: src=supervisor-doveshed.conf dest=/etc/supervisor/conf.d/doveshed.conf
+

@@ -14,14 +14,19 @@
 - name: pull docker image for mailpile
   command: "docker pull cloudfleet/blimp-mailpile"
 
-- name: start supervisord
-  service: name=supervisor state=started
-  
-- name: copy mail auth config file
-  template: src=mail-auth.conf dest=/etc/nginx/sites-enabled/mail-auth.conf
-  
 - name: copy smtp proxy config file
-  copy: src=smtp-proxy.conf dest=/opt/cloudfleet/conf/nginx-mail/smtp-proxy.conf
+  copy: src=smtp_proxy.ini dest=/opt/cloudfleet/doveshed/config/smtp_proxy.ini
+
+- name: copy host_list config file
+  copy: src=host_list dest=/opt/cloudfleet/doveshed/config/host_list
+
+- name: copy me config file
+  copy: src=me dest=/opt/cloudfleet/doveshed/config/me
+
+
+- name: start supervisord
+  service: name=supervisor state=restarted
+  
 
 - name: start nginx
   service: name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes

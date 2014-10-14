@@ -8,6 +8,7 @@
   roles:
     - pagekite
     - nginx
+    - doveshed
     - docker
     - users
     - supervisord
