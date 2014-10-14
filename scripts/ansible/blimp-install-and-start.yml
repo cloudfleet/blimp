@@ -8,11 +8,11 @@
   roles:
     - pagekite
     - nginx
-    - doveshed
-    - conduit
     - docker
     - users
     - supervisord
+    - doveshed
+    - conduit
     - apps
     - start_services
     - start_apps
