@@ -5,9 +5,6 @@
 - name: remove default nginx server
   file: path=/etc/nginx/sites-enabled/default state=absent
   
-- name: set nginx configuration file
-  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
-
 - name: add cloudfleet nginx config file
   copy: src=cloudfleet dest=/etc/nginx/sites-available/cloudfleet
 
@@ -17,9 +14,3 @@
 - name: create cloudfleet config directory
   file: path=/opt/cloudfleet/conf/nginx state=directory
 
-- name: create cloudfleet mail config directory
-  file: path=/opt/cloudfleet/conf/nginx-mail state=directory
-
-
-- name: add mailbox nginx config file
-  copy: src=blimp-mailbox dest=/opt/cloudfleet/conf/nginx/blimp-mailbox.conf
