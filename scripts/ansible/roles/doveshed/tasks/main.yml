@@ -5,7 +5,7 @@
     - npm
 
 - name: install haraka
-  npm: name=haraka state=present global=yes
+  npm: name=Haraka state=present global=yes
   
 - name: clone doveshed 
   sudo: yes
