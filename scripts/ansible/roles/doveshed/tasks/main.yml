@@ -5,9 +5,9 @@
     - npm
 
 - name: install haraka
-  npm: name=haraka state=present
+  npm: name=haraka state=present global=yes
   
-- name: clone doveshed
+- name: clone doveshed 
   sudo: yes
   git: repo=https://github.com/cloudfleet/doveshed.git dest=/opt/cloudfleet/doveshed
   
