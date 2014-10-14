@@ -15,13 +15,13 @@
   command: "docker pull cloudfleet/blimp-mailpile"
 
 - name: copy smtp proxy config file
-  copy: src=smtp_proxy.ini dest=/opt/cloudfleet/doveshed/config/smtp_proxy.ini
+  template: src=smtp_proxy.ini dest=/opt/cloudfleet/doveshed/config/smtp_proxy.ini
 
 - name: copy host_list config file
-  copy: src=host_list dest=/opt/cloudfleet/doveshed/config/host_list
+  template: src=host_list dest=/opt/cloudfleet/doveshed/config/host_list
 
 - name: copy me config file
-  copy: src=me dest=/opt/cloudfleet/doveshed/config/me
+  template: src=me dest=/opt/cloudfleet/doveshed/config/me
 
 
 - name: start supervisord
