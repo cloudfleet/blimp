@@ -11,7 +11,11 @@
   sudo: yes
   git: repo=https://github.com/cloudfleet/doveshed.git dest=/opt/cloudfleet/doveshed
   
-- name: creating conduit log directory
+- name: creating conduit queue directory
+  sudo: yes
+  file: path=/opt/cloudfleet/doveshed/queue owner=cloudfleet state=directory
+
+- name: creating doveshed log directory
   sudo: yes
   file: path=/var/log/cloudfleet state=directory
 
