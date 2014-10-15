@@ -11,6 +11,12 @@
   sudo: yes
   git: repo=https://github.com/cloudfleet/doveshed.git dest=/opt/cloudfleet/doveshed
   
+- name: generate tls private key
+  command: "openssl genrsa -out /opt/cloudfleet/doveshed/tls_key.pem 2048"
+  
+- name: extract public key
+  command: "openssl rsa -pubout -in /opt/cloudfleet/doveshed/tls_key.pem -out /opt/cloudfleet/doveshed/tls_cert.pem"
+  
 - name: creating conduit queue directory
   sudo: yes
   file: path=/opt/cloudfleet/doveshed/queue owner=cloudfleet state=directory
