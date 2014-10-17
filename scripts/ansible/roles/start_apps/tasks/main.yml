@@ -13,4 +13,5 @@
       - "/etc/hosts:/etc/hosts"
     ports:
       - "127.0.0.1:{{item.value.port}}:80"
+    env: "CLOUDFLEET_DOMAIN={{cloudfleet.domain}}"
   with_dict: apps
