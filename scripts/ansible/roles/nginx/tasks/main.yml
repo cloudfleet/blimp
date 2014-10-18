@@ -13,4 +13,7 @@
   
 - name: create cloudfleet config directory
   file: path=/opt/cloudfleet/conf/nginx state=directory
+  
+- name: add mailbox nginx config file
+  copy: src=blimp-mailbox dest=/opt/cloudfleet/conf/nginx/blimp-mailbox.conf
 
