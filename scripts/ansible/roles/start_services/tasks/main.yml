@@ -24,7 +24,7 @@
   template: src=me dest=/opt/cloudfleet/doveshed/config/me
 
 - name: generate doveshed tls keys
-  command: "openssl req -nodes -newkey rsa:2048 -keyout /opt/cloudfleet/doveshed/config/tls_key.pem -out /opt/cloudfleet/doveshed/config/tls_cert.pem -subj /C=/ST=/L=/O=CloudFleet/OU=/CN={{cloudfleet.domain}}"
+  command: "openssl req -x509 -days 2190 -nodes -newkey rsa:2048 -keyout /opt/cloudfleet/doveshed/config/tls_key.pem -out /opt/cloudfleet/doveshed/config/tls_cert.pem -subj /C=/ST=/L=/O=CloudFleet/OU=/CN={{cloudfleet.domain}}"
 
 - name: start supervisord
   service: name=supervisor state=restarted
