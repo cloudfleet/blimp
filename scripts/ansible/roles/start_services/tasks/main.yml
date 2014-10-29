@@ -4,6 +4,7 @@
 
 - name: unmount hosts file
   command: "umount /etc/hosts"
+  ignore_errors: yes
 
 - name: add localhost to hosts file
   lineinfile: "dest=/etc/hosts line='127.0.0.1 localhost blimp' state=present"
@@ -26,8 +27,11 @@
 - name: generate doveshed tls keys
   command: "openssl req -x509 -days 2190 -nodes -newkey rsa:2048 -keyout /opt/cloudfleet/doveshed/config/tls_key.pem -out /opt/cloudfleet/doveshed/config/tls_cert.pem -subj /C=/ST=/L=/O=CloudFleet/OU=/CN={{cloudfleet.domain}}"
 
-- name: start supervisord
-  service: name=supervisor state=restarted
+#- name: start supervisord
+#  service: name=supervisor state=restarted
+
+- name: restart supervisord
+  command: "service supervisor restart"
   
 
 - name: start nginx
@@ -56,10 +60,25 @@
   docker:
     hostname: blimp-mailbox
     image: cloudfleet/blimp-mailbox
-    name: blimp-mailbox
+    name: mailbox
     volumes: 
       - "/opt/cloudfleet/common/mails:/opt/cloudfleet/maildir"
       - "/etc/hosts:/etc/hosts"
     ports:
       - "127.0.0.1:30001:3000"
+      
+- name: start musterroll container
+  sudo: yes
+  docker: 
+    state: running
+    hostname: "musterroll"
+    image: "cloudfleet/blimp-musterroll"
+    name: "musterroll"
+    volumes: 
+      - "/opt/cloudfleet/apps/musterroll/data:/opt/cloudfleet/data"
+      - "/etc/hosts:/etc/hosts"
+    ports:
+      - "127.0.0.1:30002:80"
+    env: "CLOUDFLEET_DOMAIN={{cloudfleet.domain}}"
+  with_dict: apps
 

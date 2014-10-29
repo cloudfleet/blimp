@@ -1,12 +1,10 @@
 ---
 apps:
-  musterroll:
-    friendly_name: User Management
-    location: musterroll
-    image: cloudfleet/blimp-musterroll
+  wellknown:
+    friendly_name: Wellknown
+    location: .wellknown
+    image: cloudfleet/blimp-wellknown
     port: 10001
-    storage: 
-      - filesystem
   cockpit:
     friendly_name: Cockpit
     location: ""
@@ -14,4 +12,12 @@ apps:
     port: 10000
     storage: 
       - filesystem
-
+  radicale:
+    friendly_name: Radicale
+    location: radicale
+    image: cloudfleet/blimp-radicale
+    port: 10002
+    storage: 
+      - filesystem
+    dependencies: musterroll
+  
