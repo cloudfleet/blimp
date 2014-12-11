@@ -2,13 +2,13 @@
 - debug: var=cloudfleet
 - name: run docker containers
   sudo: yes
-  docker: 
+  docker:
     state: running
     hostname: "{{item.key}}"
     image: "{{item.value.image}}"
     name: "{{item.key}}"
     links: "{{item.value.dependencies|default('postgres')}}"
-    volumes: 
+    volumes:
       - "/opt/cloudfleet/apps/{{item.key}}/data:/opt/cloudfleet/data"
       - "/opt/cloudfleet/apps/{{item.key}}/log:/opt/cloudfleet/log"
     ports:

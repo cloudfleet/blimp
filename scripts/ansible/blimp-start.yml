@@ -3,8 +3,7 @@
   vars_files:
     - apps.yml
     - cloudfleet.yml
-    
+
   roles:
     - start_services
     - start_apps
-
