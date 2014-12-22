@@ -1,13 +1,15 @@
 #!/bin/bash
 
 # run as:
-# ./scripts/build_docker_images.sh scripts/docker_images.txt
+# ./scripts/build_docker_images.sh \
+#    scripts/docker_images.txt
+#    [/build/location]
 
 #TODO: https://github.com/docker-library/node.git /0.10/slim
 
 docker_images_file=$1
 base_repo_url=https://github.com/cloudfleet
-build_location=/tmp/docker_images
+build_location=${2:-/tmp/docker_images}
 
 function fetch_code(){
     repo_url=$1
@@ -23,8 +25,8 @@ function fetch_code(){
 
 function build_image(){
     image=$1
-    echo building $image
     repo_dir=$build_location/$line
+    echo "fetching $image to $repo_dir"
     fetch_code $base_repo_url/$image $repo_dir
     cd $repo_dir
     sed -i 's/ubuntu:14.04/hominidae\/armhf-ubuntu/g' Dockerfile
@@ -35,10 +37,11 @@ function build_image(){
 }
 
 function clean_up(){
-    rm -rf /tmp/docker_images
+    rm -rf $build_location
 }
 
 function build_all_images(){
+    echo "building images from $base_repo_url in $build_location"
     while read line; do
         build_image $line
     done < $docker_images_file
