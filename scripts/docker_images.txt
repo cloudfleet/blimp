@@ -1,7 +1,8 @@
-Mailpile
-blimp-mailbox
-blimp-mailpile
-blimp-musterroll
-blimp-wellknown
-blimp-radicale
-blimp-cockpit
+https://github.com/docker-library/node.git node-armhf /0.10/slim/
+https://github.com/cloudfleet/Mailpile.git cloudfleet/mailpile /
+https://github.com/cloudfleet/blimp-musterroll.git cloudfleet/blimp-musterroll /
+https://github.com/cloudfleet/blimp-mailbox.git cloudfleet/blimp-mailbox /
+https://github.com/cloudfleet/blimp-mailpile.git cloudfleet/blimp-mailpile /
+https://github.com/cloudfleet/blimp-wellknown.git cloudfleet/blimp-wellknown /
+https://github.com/cloudfleet/blimp-radicale.git cloudfleet/blimp-radicale /
+https://github.com/cloudfleet/blimp-cockpit.git cloudfleet/blimp-cockpit /
