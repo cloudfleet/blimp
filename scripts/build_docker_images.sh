@@ -24,6 +24,7 @@ function fetch_code(){
 
 function patch_dockerfile(){
     sed -i 's/ubuntu:14.04/hominidae\/armhf-ubuntu/g' Dockerfile
+    sed -i 's/buildpack-deps/mazzolino\/armhf-debian/g' Dockerfile
     sed -i 's/debian/mazzolino\/armhf-debian/g' Dockerfile
     sed -i 's/node:slim/node-armhf/g' Dockerfile
 }
@@ -36,6 +37,7 @@ function build_image(){
     echo "fetching $repo_url to $repo_dir"
     fetch_code $repo_url $repo_dir
     cd $repo_dir/$dockerfile_path
+    patch_dockerfile
     image_name=`echo "$image_name" | sed 's/./\L&/g'` # lowercase
     echo "building Docker image as $image_name"
     sudo docker build -t $image_name .
