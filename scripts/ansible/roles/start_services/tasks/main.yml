@@ -14,6 +14,8 @@
 
 - name: pull docker image for mailpile
   command: "docker pull cloudfleet/blimp-mailpile"
+  tags:
+    - docker-pull
 
 - name: copy smtp proxy config file
   template: src=smtp_proxy.ini dest=/opt/cloudfleet/doveshed/config/smtp_proxy.ini
