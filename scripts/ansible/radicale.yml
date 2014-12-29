@@ -1,0 +1,9 @@
+- hosts: all
+  sudo: yes
+  vars_files:
+    - apps.yml
+    - cloudfleet.yml
+    
+  roles:
+    - start_radicale
+

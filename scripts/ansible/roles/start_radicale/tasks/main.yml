@@ -1,0 +1,16 @@
+---
+- name: run docker containers
+  sudo: yes
+  docker: 
+    state: running
+    hostname: "radicale"
+    image: "cloudfleet/blimp-radicale"
+    name: "radicale"
+    links: "musterroll:musterroll"
+    volumes: 
+      - "/opt/cloudfleet/apps/radicale/data:/opt/cloudfleet/data"
+      - "/opt/cloudfleet/apps/radicale/log:/opt/cloudfleet/log"
+      - "/etc/hosts:/etc/hosts"
+    ports:
+      - "127.0.0.1:10002:80"
+    env: "CLOUDFLEET_DOMAIN=doublemalt.cloudfleet.io"
