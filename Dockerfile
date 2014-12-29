@@ -10,5 +10,3 @@ RUN scripts/install.sh
 
 CMD scripts/start-docker.sh
 VOLUME /var/lib/docker
-
-
