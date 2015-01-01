@@ -1,2 +1,11 @@
 *~
 .vagrant
+
+# docs ignores
+#-------------
+\#*
+\.\#*
+*.pyc
+*.pid
+docs/output
+docs/cache
