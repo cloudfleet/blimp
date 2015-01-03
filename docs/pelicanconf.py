@@ -35,3 +35,5 @@ DEFAULT_PAGINATION = False
 #RELATIVE_URLS = True
 
 THEME = u'cloudfleet-pelican-theme'
+DISPLAY_PAGES_ON_MENU = False
+
