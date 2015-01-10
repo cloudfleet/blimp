@@ -23,10 +23,10 @@ function fetch_code(){
 }
 
 function patch_dockerfile(){
-    sed -i 's/ubuntu:14.04/hominidae\/armhf-ubuntu/g' Dockerfile
-    sed -i 's/buildpack-deps/mazzolino\/armhf-debian/g' Dockerfile
-    sed -i 's/debian/mazzolino\/armhf-debian/g' Dockerfile
-    sed -i 's/node:slim/node-armhf/g' Dockerfile
+    sed -i 's/FROM\ ubuntu:14.04/FROM\ hominidae\/armhf-ubuntu/g' Dockerfile
+    sed -i 's/FROM\ buildpack-deps/FROM\ mazzolino\/armhf-debian/g' Dockerfile
+    sed -i 's/FROM\ debian/FROM\ mazzolino\/armhf-debian/g' Dockerfile
+    sed -i 's/FROM\ node:slim/FROM\ node-armhf/g' Dockerfile
 }
 
 function build_image(){
