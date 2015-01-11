@@ -29,6 +29,13 @@ function patch_dockerfile(){
     sed -i 's/FROM\ node:slim/FROM\ node-armhf/g' Dockerfile
 }
 
+function tag_images(){
+    # provide additional tags that are necessary
+    docker tag library/node-armhf node
+    docker tag mazzolino/armhf-debian debian
+    docker tag hominidae/armhf-ubuntu ubuntu
+}
+
 function build_image(){
     repo_url=$1
     image_name=$2
@@ -38,9 +45,10 @@ function build_image(){
     fetch_code $repo_url $repo_dir
     cd $repo_dir/$dockerfile_path
     patch_dockerfile
+    tag_images
     image_name=`echo "$image_name" | sed 's/./\L&/g'` # lowercase
     echo "building Docker image as $image_name"
-    sudo docker build -t $image_name .
+    docker build -t $image_name .
 }
 
 function clean_up(){

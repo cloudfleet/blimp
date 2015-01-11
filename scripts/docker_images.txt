@@ -1,5 +1,5 @@
 https://github.com/docker-library/postgres.git library/postgres /9.4/
-https://github.com/docker-library/node.git library/node-armhf /0.10/slim/
+https://github.com/cloudfleet/blimp-node-armhf.git library/node-armhf /
 https://github.com/cloudfleet/Mailpile.git cloudfleet/mailpile /
 https://github.com/cloudfleet/blimp-musterroll.git cloudfleet/blimp-musterroll /
 https://github.com/cloudfleet/blimp-mailbox.git cloudfleet/blimp-mailbox /
