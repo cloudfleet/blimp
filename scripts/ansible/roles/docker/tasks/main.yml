@@ -2,15 +2,24 @@
 - name: setup docker repository
   sudo: yes
   apt_repository: repo='deb https://get.docker.io/ubuntu docker main' state=present
+  tags:
+    - skip-physical-blimp
 
 - name: get repository key for docker
   sudo: yes
   command: apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+  tags: 
+    - skip-physical-blimp
 
 - name: install docker
   sudo: yes
   apt: pkg=lxc-docker state=present update_cache=yes
+  tags:
+    - skip-physical-blimp
   
 - name: install docker-py
   sudo: yes
   pip: name=docker-py state=present
+  tags:
+    - skip-physical-blimp
+
