@@ -32,6 +32,7 @@ function patch_dockerfile(){
 function tag_images(){
     # provide additional tags that are necessary
     docker tag library/node-armhf node
+    docker tag library/nginx-armhf nginx
     docker tag mazzolino/armhf-debian debian
     docker tag hominidae/armhf-ubuntu ubuntu
 }
