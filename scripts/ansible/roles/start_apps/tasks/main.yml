@@ -7,7 +7,7 @@
     hostname: "{{item.key}}"
     image: "{{item.value.image}}"
     name: "{{item.key}}"
-    links: "{{item.value.dependencies|default('postgres')}}"
+    #links: "{{item.value.dependencies|default('postgres')}}"
     volumes:
       - "/opt/cloudfleet/apps/{{item.key}}/data:/opt/cloudfleet/data"
       - "/opt/cloudfleet/apps/{{item.key}}/log:/opt/cloudfleet/log"
