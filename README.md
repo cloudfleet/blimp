@@ -9,9 +9,15 @@ To run the blimp on an ARM device, install the dependencies:
 
     ./scripts/install.sh
 
+Edit `/etc/environment` and add:
+
+    CLOUDFLEET_DOMAIN=subdomain.bonniecloud.com
+    CLOUDFLEET_SECRET=password
+    CLOUDFLEET_HOST=blimpyard.cloudfleet.io:443
+
 And start the services:
 
-    ./scripts/start-docker.sh
+    ./scripts/start.sh
 
 
 ## Development

@@ -13,6 +13,6 @@ install.sh->ansible/blimp_install.yml: set up pagekite, \nnginx, docker...
 Starting the Docker container:
 
 <div class="diagram">
-docker run->start_docker.sh: if ARM build images, \nrun ansible
+docker run->start.sh: if ARM build images, \nrun ansible
 start_docker.sh->ansible/blimp_start.yml: start services, \nstart apps
 </div>
