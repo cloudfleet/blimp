@@ -1,9 +1,9 @@
-https://github.com/cloudfleet/blimp-node-armhf.git library/node-armhf /
-https://github.com/cloudfleet/blimp-nginx-armhf.git library/nginx-armhf /
-https://github.com/cloudfleet/Mailpile.git cloudfleet/mailpile /
-https://github.com/cloudfleet/blimp-musterroll.git cloudfleet/blimp-musterroll /
-https://github.com/cloudfleet/blimp-mailbox.git cloudfleet/blimp-mailbox /
-https://github.com/cloudfleet/blimp-mailpile.git cloudfleet/blimp-mailpile /
-https://github.com/cloudfleet/blimp-wellknown.git cloudfleet/blimp-wellknown /
-https://github.com/cloudfleet/blimp-radicale.git cloudfleet/blimp-radicale /
-https://github.com/cloudfleet/blimp-cockpit.git cloudfleet/blimp-cockpit /
+https://github.com/cloudfleet/blimp-node-armhf.git library/node-armhf master /
+https://github.com/cloudfleet/blimp-nginx-armhf.git library/nginx-armhf master /
+https://github.com/cloudfleet/Mailpile.git cloudfleet/mailpile feature/run_in_subdirectory /
+https://github.com/cloudfleet/blimp-musterroll.git cloudfleet/blimp-musterroll master /
+https://github.com/cloudfleet/blimp-mailbox.git cloudfleet/blimp-mailbox master /
+https://github.com/cloudfleet/blimp-mailpile.git cloudfleet/blimp-mailpile master /
+https://github.com/cloudfleet/blimp-wellknown.git cloudfleet/blimp-wellknown master /
+https://github.com/cloudfleet/blimp-radicale.git cloudfleet/blimp-radicale master /
+https://github.com/cloudfleet/blimp-cockpit.git cloudfleet/blimp-cockpit master /

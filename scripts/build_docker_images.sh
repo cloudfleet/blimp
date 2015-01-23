@@ -18,7 +18,7 @@ function fetch_code(){
         echo "folder exists, not cloning" # pull changes?
     else
         echo "cloning https://github.com/cloudfleet/$line"
-        git clone --depth=1 $repo_url $repo_dir
+        git clone --depth=1 --branch $branch $repo_url $repo_dir
     fi
 }
 
@@ -40,7 +40,7 @@ function tag_images(){
 function build_image(){
     repo_url=$1
     image_name=$2
-    dockerfile_path=$3
+    dockerfile_path=$4
     repo_dir=$build_location/$image_name
     echo "fetching $repo_url to $repo_dir"
     fetch_code $repo_url $repo_dir
