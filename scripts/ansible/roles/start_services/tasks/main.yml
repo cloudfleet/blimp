@@ -30,15 +30,15 @@
 - name: copy me config file
   template: src=me dest=/opt/cloudfleet/doveshed/config/me
 
+
+
 - name: generate doveshed tls keys
   command: "openssl req -x509 -days 2190 -nodes -newkey rsa:4096 -keyout /opt/cloudfleet/doveshed/config/tls_key.pem -out /opt/cloudfleet/doveshed/config/tls_cert.pem -subj /C=/ST=/L=/O=CloudFleet/OU=/CN={{cloudfleet.domain}}"
 
-#- name: start supervisord
-#  service: name=supervisor state=restarted
 
 - name: restart supervisord
   command: "service supervisor restart"
-  
+
 
 - name: generate nginx ssl certificate-request
   command: "openssl req -x509 -nodes -newkey rsa:4096 -keyout /opt/cloudfleet/conf/nginx/ssl/tls_key.pem -out /opt/cloudfleet/conf/nginx/ssl/tls_req.pem -subj /C=/ST=/L=/O=CloudFleet/OU=/CN={{cloudfleet.domain}}"
@@ -92,5 +92,4 @@
     ports:
       - "127.0.0.1:30002:80"
     env: "CLOUDFLEET_DOMAIN={{cloudfleet.domain}}"
-  with_dict: apps
 
