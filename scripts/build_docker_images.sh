@@ -28,6 +28,7 @@ function patch_dockerfile(){
     sed -i 's/FROM\ buildpack-deps/FROM\ mazzolino\/armhf-debian/g' Dockerfile
     sed -i 's/FROM\ debian/FROM\ mazzolino\/armhf-debian/g' Dockerfile
     sed -i 's/FROM\ node:slim/FROM\ library\/node-armhf/g' Dockerfile
+    sed -i 's/FROM\ nginx/FROM\ library\/nginx-armhf/g' Dockerfile
 }
 
 function tag_images(){
