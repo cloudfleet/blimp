@@ -13,11 +13,12 @@ build_location=${2:-/tmp/docker_images}
 function fetch_code(){
     repo_url=$1
     repo_dir=$2
+    branch=$3
     if [ -d $repo_dir ]; then
         # if true this block of code will execute
         echo "folder exists, not cloning" # pull changes?
     else
-        echo "cloning https://github.com/cloudfleet/$line"
+        echo "cloning $line"
         git clone --depth=1 --branch $branch $repo_url $repo_dir
     fi
 }
@@ -40,10 +41,11 @@ function tag_images(){
 function build_image(){
     repo_url=$1
     image_name=$2
+    branch=$3
     dockerfile_path=$4
     repo_dir=$build_location/$image_name
     echo "fetching $repo_url to $repo_dir"
-    fetch_code $repo_url $repo_dir
+    fetch_code $repo_url $repo_dir $branch
     cd $repo_dir/$dockerfile_path
     patch_dockerfile
     tag_images
