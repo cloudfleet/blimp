@@ -12,6 +12,7 @@ start_not_arm(){
     scripts/wrapdocker.sh
     echo "start on non-ARM"
     (cd scripts/ansible && ansible-playbook blimp-start.yml)
+    /bin/bash
 }
 
 
@@ -26,4 +27,3 @@ else
     start_not_arm
 fi
 
-/bin/bash
