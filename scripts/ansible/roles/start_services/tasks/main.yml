@@ -5,6 +5,8 @@
 - name: unmount hosts file
   command: "umount /etc/hosts"
   ignore_errors: yes
+  tags:
+    - skip-physical-blimp
 
 - name: add localhost to hosts file
   lineinfile: "dest=/etc/hosts line='127.0.0.1 localhost blimp' state=present"
