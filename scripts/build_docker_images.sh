@@ -2,10 +2,8 @@
 
 # run as:
 # ./scripts/build_docker_images.sh \
-#    scripts/docker_images.txt
+#    scripts/docker_images.txt \
 #    [/build/location]
-
-#TODO: https://github.com/docker-library/node.git /0.10/slim
 
 docker_images_file=$1
 build_location=${2:-/tmp/docker_images}
