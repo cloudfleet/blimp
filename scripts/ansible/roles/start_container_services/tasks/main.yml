@@ -29,7 +29,7 @@
     image: "cloudfleet/blimp-musterroll"
     name: "musterroll"
     volumes:
-      - "/opt/cloudfleet/apps/musterroll/data:/opt/cloudfleet/data"
+      - "/opt/cloudfleet/common/users:/opt/cloudfleet/data"
       - "/etc/hosts:/etc/hosts"
     ports:
       - "127.0.0.1:30002:80"

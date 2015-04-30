@@ -14,6 +14,6 @@
       - "/opt/cloudfleet/common/mails/{{item.username}}/:/opt/cloudfleet/Mails/"
       - "/opt/cloudfleet/common/mails/{{item.username}}/:/etc/hosts"
     ports:
-      - "127.0.0.1:{{item.value.port}}:33411"
+      - "127.0.0.1:{{ports[item.username]}}:33411"
     env: "CLOUDFLEET_USERNAME={{item.username}}"
   with_dict: users
