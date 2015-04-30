@@ -21,7 +21,7 @@ start_not_arm(){
 
 # check for ARM
 if hash dpkg 2>/dev/null; then # if dpkg available
-    if [ "`dpkg --print-installation-architecture`" = "armhf" ]; then
+    if [ "`dpkg --print-architecture`" = "armhf" ]; then
         start_arm
     else
         start_not_arm
@@ -29,4 +29,3 @@ if hash dpkg 2>/dev/null; then # if dpkg available
 else
     start_not_arm
 fi
-
