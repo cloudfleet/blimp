@@ -1,0 +1,19 @@
+---
+- debug: var=cloudfleet
+- name: run mailpile containers
+  sudo: yes
+  docker:
+    state: running
+    hostname: "mailpile-{{item.username}}"
+    image: "cloudfleet/blimp-mailpile"
+    name: "mailpile-{{item.username}}"
+    #links: "{{item.value.dependencies|default('postgres')}}"
+    volumes:
+      - "/opt/cloudfleet/common/gnupg/{{item.username}}/:/root/.gnupg/"
+      - "/opt/cloudfleet/apps/mailpile/{{item.username}}/data/:/root/.local/share/Mailpile/"
+      - "/opt/cloudfleet/common/mails/{{item.username}}/:/opt/cloudfleet/Mails/"
+      - "/opt/cloudfleet/common/mails/{{item.username}}/:/etc/hosts"
+    ports:
+      - "127.0.0.1:{{item.value.port}}:33411"
+    env: "CLOUDFLEET_USERNAME={{item.username}}"
+  with_dict: users

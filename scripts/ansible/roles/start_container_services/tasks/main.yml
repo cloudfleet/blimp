@@ -1,0 +1,36 @@
+---
+- name: start postgres container
+  sudo: yes
+  docker:
+    hostname: postgres
+    image: postgres
+    name: postgres
+  tags:
+    - skip-physical-blimp
+
+
+- name: start mailbox container
+  sudo: yes
+  docker:
+    hostname: blimp-mailbox
+    image: cloudfleet/blimp-mailbox
+    name: mailbox
+    volumes:
+      - "/opt/cloudfleet/common/mails:/opt/cloudfleet/maildir"
+      - "/etc/hosts:/etc/hosts"
+    ports:
+      - "127.0.0.1:30001:3000"
+
+- name: start musterroll container
+  sudo: yes
+  docker:
+    state: running
+    hostname: "musterroll"
+    image: "cloudfleet/blimp-musterroll"
+    name: "musterroll"
+    volumes:
+      - "/opt/cloudfleet/apps/musterroll/data:/opt/cloudfleet/data"
+      - "/etc/hosts:/etc/hosts"
+    ports:
+      - "127.0.0.1:30002:80"
+    env: "CLOUDFLEET_DOMAIN={{cloudfleet.domain}}"

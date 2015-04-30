@@ -6,4 +6,5 @@
 
   roles:
     - start_services
+    - start_container_services
     - start_apps

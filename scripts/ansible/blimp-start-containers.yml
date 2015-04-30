@@ -4,16 +4,7 @@
     - apps.yml
     - cloudfleet.yml
 
-
   roles:
-    - pagekite
-    - nginx
-    - docker
-    - users
-    - supervisord
-    - doveshed
-    - conduit
-    - apps
-    - start_services
     - start_container_services
     - start_apps
+    - start_user_apps
