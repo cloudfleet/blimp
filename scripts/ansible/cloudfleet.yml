@@ -1,6 +1,6 @@
 ---
 cloudfleet:
-  domain: "{{ lookup('env','CLOUDFLEET_DOMAIN') | default('doublemalt.bonniecloud.com') }}"
-  secret: "{{ lookup('env','CLOUDFLEET_SECRET') | default('password') }}"
-  host: "{{lookup('env','CLOUDFLEET_HOST') | default('blimpyard.cloudfleet.io:443')}}"
-  registry: "{{ lookup('env','CLOUDFLEET_REGISTRY') | default('registry.marina.io') }}"
+  domain: "{{ lookup('env','CLOUDFLEET_DOMAIN') | default('doublemalt.bonniecloud.com', true) }}"
+  secret: "{{ lookup('env','CLOUDFLEET_SECRET') | default('password', true) }}"
+  host: "{{lookup('env','CLOUDFLEET_HOST') | default('blimpyard.cloudfleet.io:443', true)}}"
+  registry: "{{ lookup('env','CLOUDFLEET_REGISTRY') | default('registry.marina.io', true) }}"
