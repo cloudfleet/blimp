@@ -14,7 +14,7 @@
   docker:
     hostname: blimp-mailbox
     registry: "{{cloudfleet.registry}}"
-    image: cloudfleet/blimp-mailbox
+    image: "{{cloudfleet.registry}}/cloudfleet/blimp-mailbox"
     name: mailbox
     volumes:
       - "/opt/cloudfleet/common/mails:/opt/cloudfleet/maildir"
