@@ -2,10 +2,10 @@
 
 start_arm(){
     echo "start on ARM"
-    scripts/build_docker_images.sh scripts/docker_images.txt /root/docker_images
+    #scripts/build_docker_images.sh scripts/docker_images.txt /root/docker_images
     # when marina starts working instead do:
-    # scripts/pull_docker_images.sh scripts/docker_images.txt \
-    #     registry.marina.io:5000
+    scripts/autoupdate/update-images.sh
+
     (cd scripts/ansible && \
         ansible-playbook blimp-start.yml --skip-tags=skip-physical-blimp)
 }

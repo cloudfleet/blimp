@@ -4,6 +4,7 @@
   sudo: yes
   docker:
     state: running
+    registry: "{{cloudfleet.registry}}"
     hostname: "mailpile-{{item.username}}"
     image: "cloudfleet/blimp-mailpile"
     name: "mailpile-{{item.username}}"

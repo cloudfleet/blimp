@@ -13,6 +13,7 @@
   sudo: yes
   docker:
     hostname: blimp-mailbox
+    registry: "{{cloudfleet.registry}}"
     image: cloudfleet/blimp-mailbox
     name: mailbox
     volumes:
@@ -25,6 +26,7 @@
   sudo: yes
   docker:
     state: running
+    registry: "{{cloudfleet.registry}}"
     hostname: "musterroll"
     image: "cloudfleet/blimp-musterroll"
     name: "musterroll"

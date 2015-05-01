@@ -4,6 +4,7 @@
   sudo: yes
   docker:
     state: running
+    registry: "{{cloudfleet.registry}}"
     hostname: "{{item.key}}"
     image: "{{item.value.image}}"
     name: "{{item.key}}"
