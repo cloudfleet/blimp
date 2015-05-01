@@ -1,6 +1,6 @@
 supervisorctl restart conduit
-docker rm -f mailpile-xyz
-rm /opt/cloudfleet/apps/musterroll/data/users.json 
+docker rm -f `docker ps -aq`
 docker rm -f musterroll
-(cd scripts/ansible &&         ansible-playbook blimp-start.yml --skip-tags=skip-physical-blimp)
-
+rm /opt/cloudfleet/common/users.json
+rm /opt/cloudfleet/conf/port-assignments.json
+(cd scripts/ansible && ansible-playbook blimp-start-containers.yml --skip-tags=skip-physical-blimp)
