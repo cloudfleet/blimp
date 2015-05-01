@@ -27,7 +27,7 @@
     state: running
     registry: "{{cloudfleet.registry}}"
     hostname: "musterroll"
-    image: "cloudfleet/blimp-musterroll"
+    image: "{{cloudfleet.registry}}/cloudfleet/blimp-musterroll"
     name: "musterroll"
     volumes:
       - "/opt/cloudfleet/common/users:/opt/cloudfleet/data"
