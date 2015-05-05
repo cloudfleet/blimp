@@ -1,2 +1,2 @@
 #!/bin/bash
-update-images.sh && stop-containers.sh && start-containers.sh
+(`dirname $0` && ./update-images.sh && ./stop-containers.sh && ./start-containers.sh)
