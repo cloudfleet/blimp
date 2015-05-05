@@ -5,16 +5,16 @@
   docker:
     state: running
     registry: "{{cloudfleet.registry}}"
-    hostname: "mailpile-{{item.username}}"
+    hostname: "mailpile-{{item.key}}"
     image: "{{cloudfleet.registry}}/cloudfleet/blimp-mailpile"
-    name: "mailpile-{{item.username}}"
+    name: "mailpile-{{item.key}}"
     #links: "{{item.value.dependencies|default('postgres')}}"
     volumes:
-      - "/opt/cloudfleet/common/gnupg/{{item.username}}/:/root/.gnupg/"
-      - "/opt/cloudfleet/apps/mailpile/{{item.username}}/data/:/root/.local/share/Mailpile/"
-      - "/opt/cloudfleet/common/mails/{{item.username}}/:/opt/cloudfleet/Mails/"
-      - "/opt/cloudfleet/common/mails/{{item.username}}/:/etc/hosts"
+      - "/opt/cloudfleet/common/gnupg/{{item.key}}/:/root/.gnupg/"
+      - "/opt/cloudfleet/apps/mailpile/{{item.key}}/data/:/root/.local/share/Mailpile/"
+      - "/opt/cloudfleet/common/mails/{{item.key}}/:/opt/cloudfleet/Mails/"
+      - "/opt/cloudfleet/common/mails/{{item.key}}/:/etc/hosts"
     ports:
-      - "127.0.0.1:{{ports[item.username]}}:33411"
-    env: "CLOUDFLEET_USERNAME={{item.username}}"
+      - "127.0.0.1:{{ports[item.key]}}:33411"
+    env: "CLOUDFLEET_USERNAME={{item.key}}"
   with_dict: users
