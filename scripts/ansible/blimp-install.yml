@@ -3,7 +3,7 @@
   sudo: yes
   vars_files:
     - apps.yml
-  
+
 
   roles:
     - pagekite
@@ -12,6 +12,4 @@
     - users
     - supervisord
     - doveshed
-    - conduit
     - apps
-

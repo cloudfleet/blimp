@@ -3,6 +3,7 @@
   vars_files:
     - apps.yml
     - cloudfleet.yml
+    - /opt/cloudfleet/common/users/users.json
 
 
   roles:
@@ -12,7 +13,6 @@
     - users
     - supervisord
     - doveshed
-    - conduit
     - apps
     - start_services
     - start_container_services

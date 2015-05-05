@@ -21,6 +21,19 @@
     ports:
       - "127.0.0.1:30001:3000"
 
+- name: start conduit container
+  sudo: yes
+  docker:
+    state: running
+    registry: "{{cloudfleet.registry}}"
+    hostname: "conduit"
+    image: "{{cloudfleet.registry}}/cloudfleet/blimp-conduit"
+    name: "conduit"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    env: "CLOUDFLEET_DOMAIN={{cloudfleet.domain}}"
+
+
 - name: start musterroll container
   sudo: yes
   docker:
