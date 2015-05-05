@@ -3,6 +3,7 @@
   vars_files:
     - apps.yml
     - cloudfleet.yml
+    - "/opt/cloudfleet/conf/port-assignments.json"
 
   roles:
     - start_services
