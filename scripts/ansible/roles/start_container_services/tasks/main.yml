@@ -19,7 +19,7 @@
     volumes:
       - "/opt/cloudfleet/common/mails:/opt/cloudfleet/maildir"
     ports:
-      - "127.0.0.1:30001:3000"
+      - "30001:3000"
 
 - name: start conduit container
   sudo: yes
@@ -47,7 +47,21 @@
     volumes:
       - "/opt/cloudfleet/common/users:/opt/cloudfleet/data"
     ports:
-      - "127.0.0.1:30002:80"
+      - "30002:80"
     env: "CLOUDFLEET_DOMAIN={{cloudfleet.domain}}"
     links:
       - "conduit:conduit"
+
+
+- name: start nginx container
+  sudo: yes
+  docker:
+    hostname: blimp-mailbox
+    registry: "{{cloudfleet.registry}}"
+    image: "{{cloudfleet.registry}}/cloudfleet/blimp-mailbox"
+    name: mailbox
+    volumes:
+      - "/opt/cloudfleet/conf/nginx:/opt/cloudfleet/conf/nginx"
+    ports:
+      - "80:80"
+      - "443:443"

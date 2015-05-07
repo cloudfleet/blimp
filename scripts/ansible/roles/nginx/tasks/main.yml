@@ -1,26 +1,13 @@
 ---
-- name: install nginx
-  apt: pkg=nginx state=present
-
-- name: remove default nginx server
-  file: path=/etc/nginx/sites-enabled/default state=absent
-  
-- name: add cloudfleet nginx config file
-  copy: src=cloudfleet dest=/etc/nginx/sites-available/cloudfleet
-
-- name: link cloudfleet nginx config file
-  file: src=/etc/nginx/sites-available/cloudfleet dest=/etc/nginx/sites-enabled/cloudfleet state=link
-  
 - name: create cloudfleet config directory
   file: path=/opt/cloudfleet/conf/nginx state=directory
 
 - name: create ssl directory
   file: path=/opt/cloudfleet/conf/nginx/ssl state=directory
 
-  
+
 - name: add mailbox nginx config file
   copy: src=blimp-mailbox dest=/opt/cloudfleet/conf/nginx/blimp-mailbox.conf
 
 - name: add musterroll nginx config file
   copy: src=blimp-musterroll dest=/opt/cloudfleet/conf/nginx/blimp-musterroll.conf
-

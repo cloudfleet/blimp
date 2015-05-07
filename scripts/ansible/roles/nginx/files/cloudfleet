@@ -1,7 +1,0 @@
-server {
-    listen       443;
-    server_name  localhost;
-    
-    include /opt/cloudfleet/conf/nginx/*.conf;
-
-}

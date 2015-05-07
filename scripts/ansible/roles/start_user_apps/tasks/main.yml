@@ -14,6 +14,6 @@
       - "/opt/cloudfleet/apps/mailpile/{{item.key}}/data/:/root/.local/share/Mailpile"
       - "/opt/cloudfleet/common/mails/{{item.key}}/:/opt/cloudfleet/Mails"
     ports:
-      - "127.0.0.1:{{ports['mailpile-' + item.key]}}:33411"
+      - "{{ports['mailpile-' + item.key]}}:33411"
     env: "CLOUDFLEET_USERNAME={{item.key}}"
   with_dict: users
