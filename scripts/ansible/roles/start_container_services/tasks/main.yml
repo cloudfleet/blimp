@@ -31,8 +31,10 @@
     name: "conduit"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-    env: "CLOUDFLEET_DOMAIN={{cloudfleet.domain}}"
-
+      - "/opt/cloudfleet/conf:/opt/cloudfleet/conf"
+    env:
+      - "CLOUDFLEET_DOMAIN={{cloudfleet.domain}}"
+      - "CLOUDFLEET_REGISTRY={{cloudfleet.registry}}"
 
 - name: start musterroll container
   sudo: yes
