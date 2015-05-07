@@ -1,0 +1,6 @@
+---
+- name: add_ssh | add public ssh key from local machine running Ansible
+  authorized_key: user={{ ansible_user_id }} key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  tags:
+    - blimp
+    - dev
