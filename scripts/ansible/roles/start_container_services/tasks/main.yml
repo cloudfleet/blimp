@@ -50,7 +50,7 @@
       - "30002:80"
     env: "CLOUDFLEET_DOMAIN={{cloudfleet.domain}}"
     links:
-      - "conduit:conduit"
+      - "conduit:blimp-docker"
 
 
 - name: start nginx container
@@ -65,3 +65,5 @@
     ports:
       - "80:80"
       - "443:443"
+    extra_hosts:
+      blimp-docker-host: {{{ansible_docker0.ipv4.address}}}}
