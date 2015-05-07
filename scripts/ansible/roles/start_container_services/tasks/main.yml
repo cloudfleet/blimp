@@ -66,4 +66,4 @@
       - "80:80"
       - "443:443"
     extra_hosts:
-      blimp-docker-host: {{ansible_docker0.ipv4.address}}
+      blimp-docker-host: "{{ansible_docker0.ipv4.address}}"
