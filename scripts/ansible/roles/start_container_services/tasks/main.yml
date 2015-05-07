@@ -56,10 +56,10 @@
 - name: start nginx container
   sudo: yes
   docker:
-    hostname: blimp-mailbox
+    hostname: blimp-nginx
     registry: "{{cloudfleet.registry}}"
-    image: "{{cloudfleet.registry}}/cloudfleet/blimp-mailbox"
-    name: mailbox
+    image: "{{cloudfleet.registry}}/cloudfleet/blimp-nginx"
+    name: nginx
     volumes:
       - "/opt/cloudfleet/conf/nginx:/opt/cloudfleet/conf/nginx"
     ports:
