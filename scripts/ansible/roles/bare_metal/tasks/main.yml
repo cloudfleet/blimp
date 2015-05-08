@@ -1,0 +1,5 @@
+---
+# the task to set up an empty box for the first time
+- hostname: name={{ blimp.hostname }}
+- include: apt.yml
+- include: add_ssh.yml # TODO: disable for production

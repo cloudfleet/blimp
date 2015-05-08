@@ -1,0 +1,12 @@
+- name: apt | install apt packages
+  #sudo: yes
+  apt: name={{ item }} state=present
+  with_items:
+   - avahi-daemon # for easier access - e.g. ssh root@blimp.local
+   - git-core
+#   - docker.io
+#   - python-docker
+  tags:
+   - blimp
+   - install
+   - packages

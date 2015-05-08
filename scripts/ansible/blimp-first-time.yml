@@ -1,0 +1,7 @@
+- hosts: cloudfleet
+  sudo: yes
+  vars_files:
+    - cloudfleet.yml
+
+  roles:
+    - bare_metal
