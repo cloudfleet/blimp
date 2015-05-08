@@ -18,6 +18,7 @@
     name: mailbox
     volumes:
       - "/opt/cloudfleet/common/mails:/opt/cloudfleet/maildir"
+      - "/opt/cloudfleet/common/users:/opt/cloudfleet/users"
     ports:
       - "30001:3000"
 
