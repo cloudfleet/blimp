@@ -1,0 +1,28 @@
+---
+- name: install_docker | remove some weird cubox apt repo
+  apt_repository:
+    repo: 'deb http://repo.gbps.io/BSP:/Cubox-i/Debian_Jessie/ ./'
+    state: absent
+  tags:
+    - blimp
+    - install
+    - packages
+
+- name: install_docker | add Debian experimental apt repository
+  apt_repository:
+    repo: 'deb http://ftp.de.debian.org/debian experimental main'
+    state: present
+  tags:
+   - blimp
+   - install
+   - packages
+
+- name: install_docker | install docker package
+  apt: name={{ item }} state=present
+  with_items:
+   - docker.io
+   - python-docker
+  tags:
+   - blimp
+   - install
+   - packages

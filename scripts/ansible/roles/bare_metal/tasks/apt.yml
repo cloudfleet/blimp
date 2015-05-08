@@ -4,6 +4,7 @@
   with_items:
    - avahi-daemon # for easier access - e.g. ssh root@blimp.local
    - git-core
+   - python-apt
 #   - docker.io
 #   - python-docker
   tags:
