@@ -1,0 +1,3 @@
+---
+- name: "Setup crontab for autoupdate"
+  cron: name="blimp autoupdate" minute="0" hour="4" job="/root/blimp/scripts/autoupdate/update-and-restart.sh"

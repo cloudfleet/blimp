@@ -6,6 +6,7 @@
 
 
   roles:
+    - setup_cron
     - pagekite
     - nginx
     - docker
