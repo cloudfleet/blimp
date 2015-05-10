@@ -22,7 +22,7 @@
 
 
 - name: copy smtp proxy config file
-  template: src=smtp_proxy.ini dest=/opt/cloudfleet/doveshed/config/smtp_proxy.ini
+  template: src=smtp_forward.ini dest=/opt/cloudfleet/doveshed/config/smtp_forward.ini
 
 - name: copy host_list config file
   template: src=host_list dest=/opt/cloudfleet/doveshed/config/host_list
