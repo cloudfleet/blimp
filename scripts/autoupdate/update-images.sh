@@ -6,3 +6,5 @@ docker pull $DOCKER_REGISTRY/cloudfleet/blimp-musterroll
 docker pull $DOCKER_REGISTRY/cloudfleet/blimp-mailpile
 docker pull $DOCKER_REGISTRY/cloudfleet/blimp-wellknown
 docker pull $DOCKER_REGISTRY/cloudfleet/blimp-radicale
+docker pull $DOCKER_REGISTRY/cloudfleet/blimp-nginx
+docker pull $DOCKER_REGISTRY/cloudfleet/blimp-conduit
