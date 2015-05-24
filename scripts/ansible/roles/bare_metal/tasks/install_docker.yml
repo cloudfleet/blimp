@@ -8,9 +8,9 @@
     - install
     - packages
 
-- name: install_docker | add Debian experimental apt repository
+- name: install_docker | add Debian apt repository for Docker
   apt_repository:
-    repo: 'deb http://ftp.de.debian.org/debian experimental main'
+    repo: 'deb http://ftp.de.debian.org/debian sid main contrib non-free'
     state: present
   tags:
    - blimp
@@ -22,6 +22,27 @@
   with_items:
    - docker.io
    - python-docker
+  tags:
+   - blimp
+   - install
+   - packages
+
+# just temporary as we transition away from experimental
+- name: install_docker | remove Debian experimental apt repository
+  apt_repository:
+    repo: 'deb http://ftp.de.debian.org/debian experimental main'
+    state: absent
+    update_cache: no
+  tags:
+   - blimp
+   - install
+   - packages
+
+# just temporary as we transition away from experimental
+- name: install_docker | remove Debian apt repository for Docker
+  apt_repository:
+    repo: 'deb http://ftp.de.debian.org/debian sid main contrib non-free'
+    state: absent
   tags:
    - blimp
    - install
