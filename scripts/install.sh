@@ -3,6 +3,7 @@
 sudo apt-get update
 sudo apt-get install -y ansible python-apt python-pycurl apt-transport-https python-pip iptables ca-certificates lxc git
 sudo pip install ansible --upgrade
+sudo pip install docker-py==1.1
 
 install_arm(){
     echo "install on ARM"
