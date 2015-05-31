@@ -1,3 +1,6 @@
 #!/bin/bash
-docker stop $(docker ps -qa)
-docker rm $(docker ps -qa)
+CONTAINERS_TO_DELETE=$(docker ps -qa)
+if [ -n "$CONTAINERS_TO_DELETE" ]; then
+  docker stop $CONTAINERS_TO_DELETE
+  docker rm $CONTAINERS_TO_DELETE
+fi
