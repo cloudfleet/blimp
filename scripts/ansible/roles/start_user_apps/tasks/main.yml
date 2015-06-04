@@ -1,5 +1,4 @@
 ---
-- debug: var=cloudfleet
 - name: run mailpile containers
   sudo: yes
   docker:

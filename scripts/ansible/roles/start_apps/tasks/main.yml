@@ -1,5 +1,4 @@
 ---
-- debug: var=cloudfleet
 - name: run docker containers
   sudo: yes
   docker:
