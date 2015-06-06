@@ -10,7 +10,8 @@
 
 - name: install_docker | add Debian apt repository for Docker
   apt_repository:
-    repo: 'deb http://ftp.de.debian.org/debian sid main contrib non-free'
+    #repo: 'deb http://ftp.de.debian.org/debian sid main contrib non-free'
+    repo: 'deb http://ftp.de.debian.org/debian stretch main contrib non-free'
     state: present
   tags:
    - blimp
@@ -21,6 +22,7 @@
   apt: name={{ item }} state=present
   with_items:
    - docker.io
+   - cgroupfs-mount # explicit because https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1324678.html
    - python-docker
   tags:
    - blimp
@@ -28,9 +30,10 @@
    - packages
 
 # just temporary as we transition away from experimental
-- name: install_docker | remove Debian experimental apt repository
+- name: install_docker | remove Debian apt repository for Docker
   apt_repository:
-    repo: 'deb http://ftp.de.debian.org/debian experimental main'
+    #repo: 'deb http://ftp.de.debian.org/debian experimental main'
+    repo: 'deb http://ftp.de.debian.org/debian stretch main contrib non-free'
     state: absent
     update_cache: no
   tags:
