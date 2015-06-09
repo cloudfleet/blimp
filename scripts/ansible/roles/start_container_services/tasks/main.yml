@@ -80,5 +80,5 @@
       - "nginx:nginx"
     env:
       CLOUDFLEET_DOMAIN: "{{cloudfleet.domain}}"
-      CLOUDFLEET_REGISTRY: "{{cloudfleet.registry}}"
+      CLOUDFLEET_HOST: "{{cloudfleet.host}}"
       CLOUDFLEET_SECRET: "{{cloudfleet.secret}}"
