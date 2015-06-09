@@ -68,3 +68,15 @@
       - "443:443"
     #extra_hosts:
     #  blimp-docker-host: "{{ansible_docker0.ipv4.address}}"
+
+- name: start pagekite container
+  sudo: yes
+  docker:
+    hostname: blimp-pagekite
+    registry: "{{cloudfleet.registry}}"
+    image: "{{cloudfleet.registry}}/cloudfleet/blimp-pagekite"
+    name: pagekite
+    links:
+      - "nginx:nginx"
+    #extra_hosts:
+    #  blimp-docker-host: "{{ansible_docker0.ipv4.address}}"
