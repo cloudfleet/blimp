@@ -78,5 +78,7 @@
     name: pagekite
     links:
       - "nginx:nginx"
-    #extra_hosts:
-    #  blimp-docker-host: "{{ansible_docker0.ipv4.address}}"
+    env:
+      CLOUDFLEET_DOMAIN: "{{cloudfleet.domain}}"
+      CLOUDFLEET_REGISTRY: "{{cloudfleet.registry}}"
+      CLOUDFLEET_SECRET: "{{cloudfleet.secret}}"
