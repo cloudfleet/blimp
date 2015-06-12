@@ -11,10 +11,7 @@
     - setup_cron
     - nginx
     - docker
-    - users
-    - supervisord
-    - doveshed
     - apps
-    - start_services
+    - setup_tls
     - start_container_services
     - start_apps

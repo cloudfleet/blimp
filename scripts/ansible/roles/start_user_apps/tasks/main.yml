@@ -7,12 +7,14 @@
     hostname: "mailpile-{{item.key}}"
     image: "{{cloudfleet.registry}}/cloudfleet/blimp-mailpile"
     name: "mailpile-{{item.key}}"
-    #links: "{{item.value.dependencies|default('postgres')}}"
+    links:
+      - "doveshed"
     volumes:
-      - "/opt/cloudfleet/common/gnupg/{{item.key}}/:/root/.gnupg"
-      - "/opt/cloudfleet/apps/mailpile/{{item.key}}/data/:/root/.local/share/Mailpile"
-      - "/opt/cloudfleet/common/mails/{{item.key}}/:/opt/cloudfleet/Mails"
+      - "/opt/cloudfleet/data/shared/gnupg/{{item.key}}:/root/.gnupg"
+      - "/opt/cloudfleet/data/shared/mails/{{item.key}}:/opt/cloudfleet/Mails"
+      - "/opt/cloudfleet/data/apps/mailpile/{{item.key}}:/root/.local/share/Mailpile"
     ports:
       - "{{ports['mailpile-' + item.key]}}:33411"
-    env: "CLOUDFLEET_USERNAME={{item.key}}"
+    env:
+      - "CLOUDFLEET_USERNAME={{item.key}}"
   with_dict: users

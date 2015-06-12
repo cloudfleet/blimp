@@ -1,0 +1,7 @@
+---
+- name: generate tls certificate-request
+  command: "openssl req -x509 -nodes -newkey rsa:4096 -keyout /opt/cloudfleet/data/shared/tls/tls_key.pem -out /opt/cloudfleet/data/shared/tls/tls_req.pem -subj /C=/ST=/L=/O=CloudFleet/OU=/CN={{cloudfleet.domain}}"
+  generates: /opt/cloudfleet/data/shared/tls_key.pem
+- name: copy certificate-request to tls-cert
+  command: "cp /opt/cloudfleet/data/shared/tls/tls_req.pem /opt/cloudfleet/data/shared/tls/tls_crt.pem"
+  generates: /opt/cloudfleet/data/shared/tls/tls_crt.pem

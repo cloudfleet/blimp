@@ -3,13 +3,8 @@
   sudo: yes
   vars_files:
     - apps.yml
-
-
   roles:
     - setup_cron
     - nginx
     - docker
-    - users
-    - supervisord
-    - doveshed
     - apps

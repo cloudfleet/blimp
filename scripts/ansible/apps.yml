@@ -10,14 +10,13 @@ apps:
     location: ""
     image: cloudfleet/blimp-cockpit
     port: 10000
-    storage: 
+    storage:
       - filesystem
   radicale:
     friendly_name: Radicale
     location: radicale
     image: cloudfleet/blimp-radicale
     port: 10002
-    storage: 
+    storage:
       - filesystem
     dependencies: musterroll
-  

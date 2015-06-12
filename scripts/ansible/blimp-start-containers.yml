@@ -3,10 +3,10 @@
   vars_files:
     - apps.yml
     - cloudfleet.yml
-    - "/opt/cloudfleet/common/users/users.json"
-    - "/opt/cloudfleet/conf/port-assignments.json"
+    - "/opt/cloudfleet/data/shared/users/users.json"
 
   roles:
+    - setup_tls
     - start_container_services
     - start_apps
     - start_user_apps

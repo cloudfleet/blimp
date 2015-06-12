@@ -8,6 +8,13 @@
   tags:
     - skip-physical-blimp
 
+- name: start doveshed container
+  sudo: yes
+  docker:
+    hostname: blimp-doveshed
+    registry: "{{cloudfleet.registry}}"
+    image: "{{cloudfleet.registry}}/cloudfleet/blimp-doveshed"
+    name: doveshed
 
 - name: start mailbox container
   sudo: yes

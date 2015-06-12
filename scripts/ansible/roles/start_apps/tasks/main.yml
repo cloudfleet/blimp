@@ -7,10 +7,11 @@
     hostname: "{{item.key}}"
     image: "{{cloudfleet.registry}}/{{item.value.image}}"
     name: "{{item.key}}"
-    #links: "{{item.value.dependencies|default('postgres')}}"
+    links:
+      - musterroll
+      - doveshed
     volumes:
-      - "/opt/cloudfleet/apps/{{item.key}}/data:/opt/cloudfleet/data"
-      - "/opt/cloudfleet/apps/{{item.key}}/log:/opt/cloudfleet/log"
+      - "/opt/cloudfleet/data/apps/{{item.key}}:/opt/cloudfleet/data"
     ports:
       - "{{item.value.port}}:80"
     env: "CLOUDFLEET_DOMAIN={{cloudfleet.domain}}"
