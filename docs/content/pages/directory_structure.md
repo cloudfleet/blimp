@@ -13,5 +13,7 @@
     - `config/`
       - `apps.yml`
         The apps currently installed on the blimp
-      - `cache`
+      - `cache/`
         Generated config files (`docker-compose.yml`, `nginx.conf`)
+    - `logs/`
+      CloudFleet logs
