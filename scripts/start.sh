@@ -11,8 +11,6 @@ start_arm(){
 }
 
 start_not_arm(){
-    # TODO: do only for docker within docker (not for Vagrant)
-    scripts/wrapdocker.sh
     echo "start on non-ARM"
     (cd scripts/ansible && ansible-playbook blimp-start.yml)
     /bin/bash

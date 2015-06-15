@@ -5,6 +5,4 @@
     - apps.yml
   roles:
     - setup_cron
-    - nginx
     - docker
-    - apps
