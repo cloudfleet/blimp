@@ -1,6 +1,0 @@
----
-- name: add mailbox nginx config file
-  copy: src=blimp-mailbox dest=/opt/cloudfleet/conf/nginx/blimp-mailbox.conf
-
-- name: add musterroll nginx config file
-  copy: src=blimp-musterroll dest=/opt/cloudfleet/conf/nginx/blimp-musterroll.conf
