@@ -1,7 +1,12 @@
-blimp
-=======
+Blimp
+=====
 
-The setup scripts for a cloudfleet blimp
+The setup scripts for a [CloudFleet](https://cloudfleet.io/) Blimp.
+They basically deploy a
+[blimp-engineroom](https://github.com/cloudfleet/blimp-engineroom) to some box
+(possibly remotely) and get it to control
+and auto-update a set of [Docker](www.docker.com) containers which make up
+the Blimp's functionality.
 
 ## First time box setup
 
@@ -31,6 +36,9 @@ TODO:
 - call the start script
 
 ## Start
+
+**Deprecated: this manual workflow is not current any more, while we're
+transitioning to keeping all the scripts in blimp-engineroom.**
 
 To run the blimp on an ARM device, install the dependencies:
 
