@@ -1,12 +1,12 @@
 ---
-- name: install_meta_compose | install pip via easy_install
-  sudo: yes
-  command: easy_install pip
-  tags:
-    - blimp
-    - python
-    - install
-    - packages
+# - name: install_meta_compose | install pip via easy_install
+#   sudo: yes
+#   command: easy_install pip
+#   tags:
+#     - blimp
+#     - python
+#     - install
+#     - packages
 
 - name: install_meta_compose | install meta-compose Python package
   sudo: yes

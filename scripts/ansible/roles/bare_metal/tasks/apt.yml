@@ -5,7 +5,7 @@
    - avahi-daemon # for easier access - e.g. ssh root@blimp.local
    - git-core
    - python-apt
-   # - python-pip # installed via easy_install
+   - python-pip
    # - docker.io
    # - python-docker
   tags:
