@@ -1,0 +1,11 @@
+---
+- name: schedule_upgrade | add crontab entry for the blimp upgrades
+  cron:
+    name: "upgrade blimp"
+    hour: "{{ blimp.upgrade.hour }}" # "{{ marina.builder.schedule.build.hour }}"
+    minute: "{{ blimp.upgrade.minute }}" # "{{ marina.builder.schedule.build.minute }}"
+    # sleep between 10 and 99 minutes and do the upgrade
+    job: "sleep ${RANDOM:0:2}m ; /opt/cloudfleet/engineroom/bin/upgrade-blimp.sh >> /opt/cloudfleet/data/logs/upgrade.log 2>&1'"
+  tags:
+    - blimp
+    - schedule

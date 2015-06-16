@@ -1,0 +1,6 @@
+---
+- name: copy_blimp_vars | copy blimp-vars.sh file
+  template: src=blimp-vars.sh dest=/tmp/blimp-vars.sh
+  tags:
+    - blimp
+    - config

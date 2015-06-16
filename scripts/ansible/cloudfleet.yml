@@ -6,5 +6,12 @@ cloudfleet:
   registry: "{{ lookup('env','CLOUDFLEET_REGISTRY') | default('registry.marina.io', true) }}"
 blimp:
   hostname: "{{ lookup('env','BLIMP_HOSTNAME') | default('blimp', true) }}"
+  upgrade:
+    hour: 4
+    minute: 0
+  engineroom:
+    src: "/opt/cloudfleet/engineroom"
+    repo: "https://github.com/cloudfleet/blimp-engineroom.git"
+    branch: "master"
   # the password you have to set up yourself on first login - TODO: automate
   # password: "{{ lookup('env','BLIMP_PASSWORD') | default('1234', true) }}"

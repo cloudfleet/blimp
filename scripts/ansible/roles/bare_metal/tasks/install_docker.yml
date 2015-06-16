@@ -6,6 +6,7 @@
   tags:
     - blimp
     - install
+    - install_docker
     - packages
 
 - name: install_docker | add Debian apt repository for Docker
@@ -16,6 +17,7 @@
   tags:
    - blimp
    - install
+   - install_docker
    - packages
 
 - name: install_docker | install docker package
@@ -27,6 +29,7 @@
   tags:
    - blimp
    - install
+   - install_docker
    - packages
 
 # just temporary as we transition away from experimental
@@ -39,6 +42,7 @@
   tags:
    - blimp
    - install
+   - install_docker
    - packages
 
 # just temporary as we transition away from experimental
@@ -49,4 +53,5 @@
   tags:
    - blimp
    - install
+   - install_docker
    - packages

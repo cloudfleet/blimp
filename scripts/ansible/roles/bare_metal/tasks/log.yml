@@ -1,0 +1,6 @@
+---
+- name: log | create the log folder
+  command: "mkdir -p /opt/cloudfleet/data/logs"
+  tags:
+    - blimp
+    - log

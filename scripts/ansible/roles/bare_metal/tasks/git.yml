@@ -1,0 +1,9 @@
+---
+- name: git | clone or pull changes to engineroom
+  git: repo={{ blimp.engineroom.repo }}
+       dest={{ blimp.engineroom.src }}
+       version={{ blimp.engineroom.branch }}
+  tags:
+    - blimp
+    - git
+    - pull

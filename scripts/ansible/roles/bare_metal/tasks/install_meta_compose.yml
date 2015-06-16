@@ -1,0 +1,29 @@
+---
+- name: install_meta_compose | install pip via easy_install
+  sudo: yes
+  command: easy_install pip
+  tags:
+    - blimp
+    - python
+    - install
+    - packages
+
+- name: install_meta_compose | install meta-compose Python package
+  sudo: yes
+  pip: name={{ item }} state=present
+  with_items:
+    - meta-compose
+  tags:
+    - blimp
+    - python
+    - install
+    - packages
+
+# - name: install_meta_compose | install requests Python package
+#   sudo: yes
+#   pip: name=requests state=present # version=2.5.2
+#   tags:
+#     - blimp
+#     - python
+#     - install
+#     - packages
