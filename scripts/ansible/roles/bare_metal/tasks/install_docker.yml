@@ -9,6 +9,26 @@
     - install_docker
     - packages
 
+- name: install_docker | remove some weird cubox apt repo 2
+  apt_repository:
+    repo: 'deb http://repo.maltegrosse.de/debian/wheezy/bsp_cuboxi/ ./'
+    state: absent
+  tags:
+    - blimp
+    - install
+    - install_docker
+    - packages
+
+- name: install_docker | remove some weird cubox apt repo 3
+  apt_repository:
+    repo: 'deb-src http://repo.maltegrosse.de/debian/wheezy/bsp_cuboxi/ ./'
+    state: absent
+  tags:
+    - blimp
+    - install
+    - install_docker
+    - packages
+
 - name: install_docker | add Debian apt repository for Docker
   apt_repository:
     #repo: 'deb http://ftp.de.debian.org/debian sid main contrib non-free'
