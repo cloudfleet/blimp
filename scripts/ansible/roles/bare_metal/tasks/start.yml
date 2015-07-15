@@ -1,9 +1,4 @@
 ---
-- name: start | initialize (if necessary)
-  shell: "bin/initialize-blimp.sh >> /opt/cloudfleet/data/logs/initialize.log 2>&1"
-  args:
-    chdir: "{{ blimp.engineroom.src }}"
-
 - name: start | upgrade & (re-)start
   shell: "bin/upgrade-blimp.sh >> /opt/cloudfleet/data/logs/upgrade.log 2>&1"
   args:
