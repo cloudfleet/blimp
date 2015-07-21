@@ -34,6 +34,12 @@ without a password and can omit `-k`. This should be skipped for production
 deployments with `--skip-tags=dev`. To speed things up on subsequent runs,
 you can do `--skip-tags=packages`.
 
+- After Ansible completes, run `upgrade-blimp.sh`
+
+After logging into the blimp host via ssh, execute the upgrade script:
+
+    /opt/cloudfleet/engineroom/bin/upgrade-blimp.sh
+
 *This workflow is still under construction*
 
 
