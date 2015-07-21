@@ -10,9 +10,10 @@
 
 - name: install_meta_compose | install meta-compose Python package
   sudo: yes
-  pip: name={{ item }} state=present
+  pip: name={{ item }} state=latest
   with_items:
     - meta-compose
+    - websocket-client
   tags:
     - blimp
     - python
