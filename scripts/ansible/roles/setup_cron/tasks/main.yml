@@ -1,3 +1,0 @@
----
-- name: "Setup crontab for autoupdate"
-  cron: name="blimp autoupdate" minute="0" hour="4" job="/opt/cloudfleet/engineroom/bin/upgrade-blimp.sh >> /opt/cloudfleet/data/log/upgrade.log 2>&1"

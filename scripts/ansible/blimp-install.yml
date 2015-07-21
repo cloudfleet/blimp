@@ -4,5 +4,4 @@
   vars_files:
     - apps.yml
   roles:
-    - setup_cron
     - docker

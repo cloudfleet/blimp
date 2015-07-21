@@ -9,3 +9,14 @@
   tags:
     - blimp
     - schedule
+
+- name: cron_start_containers | Start containers at boot via crontab 
+  cron:
+    name: "blimp container start at boot"
+    special_time: "reboot"
+    job: "/opt/cloudfleet/engineroom/bin/start-containers.sh >> /opt/cloudfleet/data/log/start-containers.log 2>&1"
+  tags:
+    - blimp
+    - schedule
+    
+    
