@@ -23,7 +23,7 @@ Version 2.6 is known to work
         cp hosts-remote.example hosts-remote # now edit hosts-remote
         # update the env variables below to match your case
         BLIMP_HOSTNAME=myblimp CLOUDFLEET_DOMAIN=example.com \
-        CLOUDFLEET_SECRET=mypassword \
+        CLOUDFLEET_OTP=myonetimepassword \
         CLOUDFLEET_HOST=blimpyard.cloudfleet.io:443 \
         ansible-playbook -k -i hosts-remote blimp-first-time.yml
 

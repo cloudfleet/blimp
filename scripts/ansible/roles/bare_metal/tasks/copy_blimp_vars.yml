@@ -1,6 +1,12 @@
 ---
-- name: copy_blimp_vars | copy blimp-vars.sh file
-  template: src=blimp-vars.sh dest=/tmp/blimp-vars.sh
+- name: copy_blimp_vars | create the OTP file
+  command: "echo '{{ cloudfleet.otp }}' >> /opt/cloudfleet/init/otp.txt"
+  tags:
+    - blimp
+    - config
+
+- name: copy_blimp_vars | create the domain file
+  command: "echo '{{ cloudfleet.domain }}' >> /opt/cloudfleet/init/domain.txt"
   tags:
     - blimp
     - config
