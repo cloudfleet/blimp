@@ -1,12 +1,18 @@
 ---
+- name: copy_blimp_vars | create the path
+  command: "mkdir -p /opt/cloudfleet/init/"
+  tags:
+    - blimp
+    - config
+
 - name: copy_blimp_vars | create the OTP file
-  command: "echo '{{ cloudfleet.otp }}' >> /opt/cloudfleet/init/otp.txt"
+  shell: "echo '{{ cloudfleet.otp }}' >> /opt/cloudfleet/init/otp.txt"
   tags:
     - blimp
     - config
 
 - name: copy_blimp_vars | create the domain file
-  command: "echo '{{ cloudfleet.domain }}' >> /opt/cloudfleet/init/domain.txt"
+  shell: "echo '{{ cloudfleet.domain }}' >> /opt/cloudfleet/init/domain.txt"
   tags:
     - blimp
     - config
