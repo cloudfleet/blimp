@@ -6,7 +6,6 @@
 - include: install_docker.yml
 - include: install_meta_compose.yml
 - include: copy_blimp_vars.yml
-- include: schedule_cron.yml
 - include: log.yml
 - include: git.yml
 - include: start.yml
