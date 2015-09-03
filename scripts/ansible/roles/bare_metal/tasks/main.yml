@@ -8,4 +8,5 @@
 - include: copy_blimp_vars.yml
 - include: log.yml
 - include: git.yml
+- include: cron.yml
 - include: start.yml
