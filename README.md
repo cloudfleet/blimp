@@ -42,6 +42,26 @@ After logging into the blimp host via ssh, execute the upgrade script:
 
 *This workflow is still under construction*
 
+## Installing a Blimp in Virtualbox
+
+### Use Debian Jessie
+#### enable root login via password
+
+Edit <file:/etc/ssh/sshd_config> to change
+
+    PermitRootLogin yes
+
+Restart sshd
+
+    /etc/init.d/ssh restart
+
+
+### Setup port forwarding for SSH to localhost:2222
+### Copy hosts-remote.example to hosts-remote
+
+Copy <file:scripts/ansible/hosts-remote.example> to <file:scripts/ansible/hosts-remote>
+
+    blimpie ansible_ssh_port=2222 ansible_ssh_user=root ansible_ssh_host=127.0.0.1
 
 ## Start
 
