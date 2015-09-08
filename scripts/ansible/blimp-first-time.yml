@@ -1,5 +1,4 @@
 - hosts: cloudfleet
-  sudo: yes
   vars_files:
     - cloudfleet.yml
 
