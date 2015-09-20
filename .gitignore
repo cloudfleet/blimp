@@ -9,3 +9,8 @@
 *.pid
 docs/output
 docs/cache
+
+# script ignores
+#---------------
+# this one is host-dependent
+scripts/ansible/hosts-remote

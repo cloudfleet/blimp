@@ -12,19 +12,22 @@ the Blimp's functionality.
 
 Follow these steps:
 
-- set up the
-[Debian image](http://www.igorpecovnik.com/2014/08/19/cubox-i-hummingboard-debian-sd-image/).
-Version 2.6 is known to work
-- find out the IP address
+- set up the Cubox
+  [Debian image](http://www.igorpecovnik.com/2014/08/19/cubox-i-hummingboard-debian-sd-image/).
+  Version 2.6 is known to work. Alternatively, on Raspberry Pi 2, use one of
+  [these images](https://images.collabora.co.uk/rpi2/).
+- find out the IP address (e.g. through the router web interface)
 - log in for the first time and set your root password (you'll be prompted)
-- copy the hosts-remote file and fill out the the desired values
+- if on the Debian RPi2 image, install the minimal packages on the blimp:
+
+        apt-get install python
+
+- copy the *hosts-remote* file and fill out the the desired values
 
         cd scripts/ansible
         cp hosts-remote.example hosts-remote # now edit hosts-remote
         # update the env variables below to match your case
-        BLIMP_HOSTNAME=myblimp CLOUDFLEET_DOMAIN=example.com \
-        CLOUDFLEET_OTP=myonetimepassword \
-        CLOUDFLEET_HOST=blimpyard.cloudfleet.io:443 \
+        BLIMP_HOSTNAME=myblimp \
         ansible-playbook -k -i hosts-remote blimp-first-time.yml
 
 - you'll be prompted for the password
@@ -34,11 +37,10 @@ without a password and can omit `-k`. This should be skipped for production
 deployments with `--skip-tags=dev`. To speed things up on subsequent runs,
 you can do `--skip-tags=packages`.
 
-- After Ansible completes, run `upgrade-blimp.sh`
+- After Ansible completes, reboot the blimp, so that it upgrades itself and
+  starts all the Docker containers
 
-After logging into the blimp host via ssh, execute the upgrade script:
-
-    /opt/cloudfleet/engineroom/bin/upgrade-blimp.sh
+        reboot
 
 *This workflow is still under construction*
 
