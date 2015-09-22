@@ -31,10 +31,11 @@
 
 # Installing from Hypriot's Downloads page
 ##########################################
+# only for ARM
 
-- name: install_docker | remove some weird cubox apt repo 3
+- name: install_docker | download and install the Hypriot .deb package
   #shell: dpkg --install <(wget --quiet --output-document=- http://downloads.hypriot.com/docker-hypriot_1.8.2-1_armhf.deb)
-  shell: URL='http://downloads.hypriot.com/docker-hypriot_1.8.2-1_armhf.deb'; FILE=`mktemp`; wget "$URL" -qO $FILE && dpkg -i $FILE; #rm $FILE
+  shell: URL='http://downloads.hypriot.com/docker-hypriot_1.8.2-1_armhf.deb'; FILE=`mktemp`; wget "$URL" -qO $FILE && dpkg -i $FILE; rm $FILE
   args:
     chdir: /tmp
     executable: /bin/bash
@@ -42,55 +43,59 @@
     - blimp
     - install
     - install_docker
-    - install_docker_test
     - packages
+  when: ansible_architecture == "armv7l"
 
 # Installing from a Debian repository
 #####################################
 
-# - name: install_docker | add Debian apt repository for Docker
-#   apt_repository:
-#     #repo: 'deb http://ftp.de.debian.org/debian sid main contrib non-free'
-#     repo: 'deb http://ftp.de.debian.org/debian stretch main contrib non-free'
-#     state: present
-#   tags:
-#    - blimp
-#    - install
-#    - install_docker
-#    - packages
-#
-# - name: install_docker | install docker package
-#   apt: name={{ item }} state=present
-#   with_items:
-#    - docker.io
-#    - cgroupfs-mount # explicit because https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1324678.html
-#    - python-docker
-#   tags:
-#    - blimp
-#    - install
-#    - install_docker
-#    - packages
-#
-# # just temporary as we transition away from experimental
-# - name: install_docker | remove Debian apt repository for Docker
-#   apt_repository:
-#     #repo: 'deb http://ftp.de.debian.org/debian experimental main'
-#     repo: 'deb http://ftp.de.debian.org/debian stretch main contrib non-free'
-#     state: absent
-#     update_cache: no
-#   tags:
-#    - blimp
-#    - install
-#    - install_docker
-#    - packages
-#
-# # just temporary as we transition away from experimental
-# - name: install_docker | remove Debian apt repository for Docker
-#   apt_repository:
-#     repo: 'deb http://ftp.de.debian.org/debian sid main contrib non-free'
-#     state: absent
-#   tags:
-#    - blimp
-#    - install
-#    - install_docker
-#    - packages
+- name: install_docker | add Debian apt repository for Docker
+  apt_repository:
+    #repo: 'deb http://ftp.de.debian.org/debian sid main contrib non-free'
+    repo: 'deb http://ftp.de.debian.org/debian stretch main contrib non-free'
+    state: present
+  tags:
+   - blimp
+   - install
+   - install_docker
+   - packages
+  when: ansible_architecture == "x86_64"
+
+- name: install_docker | install docker package
+  apt: name={{ item }} state=present
+  with_items:
+   - docker.io
+   - cgroupfs-mount # explicit because https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1324678.html
+   - python-docker
+  tags:
+   - blimp
+   - install
+   - install_docker
+   - packages
+  when: ansible_architecture == "x86_64"
+
+# just temporary as we transition away from experimental
+- name: install_docker | remove Debian apt repository for Docker
+  apt_repository:
+    #repo: 'deb http://ftp.de.debian.org/debian experimental main'
+    repo: 'deb http://ftp.de.debian.org/debian stretch main contrib non-free'
+    state: absent
+    update_cache: no
+  tags:
+   - blimp
+   - install
+   - install_docker
+   - packages
+  when: ansible_architecture == "x86_64"
+
+# just temporary as we transition away from experimental
+- name: install_docker | remove Debian apt repository for Docker
+  apt_repository:
+    repo: 'deb http://ftp.de.debian.org/debian sid main contrib non-free'
+    state: absent
+  tags:
+   - blimp
+   - install
+   - install_docker
+   - packages
+  when: ansible_architecture == "x86_64"
