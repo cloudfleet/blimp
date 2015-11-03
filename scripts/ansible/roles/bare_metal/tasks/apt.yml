@@ -1,7 +1,8 @@
 - name: apt | install apt packages
   apt: name={{ item }} state=present
   with_items:
-   - avahi-daemon # for easier access - e.g. ssh root@blimp.local
+   - avahi-daemon # for easier access - e.g. ssh root@blimp.local (only dev)
+   - libnss-mdns # for discovering other avahi services (only dev)
    - git-core
    - python-apt
    - python-pip
