@@ -47,9 +47,11 @@ you can do `--skip-tags=packages`.
 ## Installing a Blimp in Virtualbox
 
 ### Use Debian Jessie
+
 #### enable root login via password
 
-Edit <file:/etc/ssh/sshd_config> to change
+Edit <file:/etc/ssh/sshd_config> to change the 'PermitRootLogin' line
+to read:
 
     PermitRootLogin yes
 
