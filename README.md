@@ -12,23 +12,35 @@ make up the Blimp's functionality.
 Follow these steps.  Instructions that are specific to a RPI2 install
 are marked [RPI2], those via Cubox are [CUBOX]
 
-## Set up the arm32 box
-Current hardware tested includes Cubox or Raspberry Pi 2 Model B)
+## Set up the arm32 device
+
+Current hardware tested includes Cubox or Raspberry Pi 2 Model B).
+We recommend using the Raspberry Pi 2.
 
 ### [CUBOX] set up the Cubox
-Version 2.6 is known to work.
-##### [Debian image](http://www.igorpecovnik.com/2014/08/19/cubox-i-hummingboard-debian-sd-image/).
 
-#### [RPi2] On Raspberry Pi 2 B boards, use one of
-  [these images](https://images.collabora.co.uk/rpi2/).
+Version 2.6 of the unofficial Cubox Debian images is known to work.
+Download the image from [here](http://www.armbian.com/cubox-i/).
 
-## find out the IP address (e.g. through the router web interface)
+TODO: explain the luks drivers
+[patch](http://blog.soutade.fr/post/2015/08/luks-on-cubox-imx6-platform.html)
+(or include this in our scripts).
 
-From a UNIX host if you know the interface name (something like 'en0') one can use
+### [RPi2] set up a Raspberry Pi 2
+
+On Raspberry Pi 2 B boards, use one of
+[these images](https://images.collabora.co.uk/rpi2/).
+
+## Find out the IP address
+
+One option is to look at your router's web interface. If that's not possible,
+from a UNIX host if you know the interface name (something like 'en0'),
+one can use:
 
     sudo tcpdump -i en0
 
 to watch the initial ethernet traffic.
+
 ## Log in to the unit for the first time via SSH and set your root password (you'll be prompted)
 
 ## Install needed system packages via apt-get
@@ -36,7 +48,7 @@ to watch the initial ethernet traffic.
 apt-get install python
 
 
-##  [RPi2] Resizing SD image
+## [RPi2] Resizing the SD image
 
 The Debian RPi2 image is initially much smaller (~2.2Gib) than what is
 available on the 16Gib SD cards we are using, small enough that one can't currently run
