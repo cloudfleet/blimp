@@ -102,7 +102,7 @@ desired values
     # update the env variables below to match your case
 
 Run Ansible to populate the base image with all the tools necessary to run
-(blimp-engineroom)[https://github.com/cloudfleet/blimp-engineroom]:
+[blimp-engineroom](https://github.com/cloudfleet/blimp-engineroom):
 
     BLIMP_HOSTNAME=myblimp \
     ansible-playbook -k -i hosts-remote blimp-first-time.yml
