@@ -3,6 +3,11 @@
 # usage:
 #
 # ./format_usbs.sh <key device> <storage device>
+# Deprecated use 
+# <https://github.com/cloudfleet/blimp-engineroom/blob/enable-crypt-upgrade/bin/cryptpart/wipe_disks.sh>.
+
+echo "DEPRECATED.  Use <https://github.com/cloudfleet/blimp-engineroom/blob/enable-crypt-upgrade/bin/cryptpart/wipe_disks.sh>."
+echo "Sleeping while you ponder if you wish to proceed" && sleep 6 # gimem time to think about it 
 
 DIR=$( cd "$( dirname $0 )" && pwd )
 
