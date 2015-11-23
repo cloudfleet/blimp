@@ -35,6 +35,9 @@ TODO: explain the luks drivers
 Download one of
 [these images](https://images.collabora.co.uk/rpi2/).
 
+The <https://images.collabora.co.uk/rpi2/jessie-rpi2-20150705.img.gz>
+image is known to work.
+
 ## Find out the IP address
 
 One option is to look at your router's web interface. If that's not possible,
