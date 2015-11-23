@@ -18,7 +18,7 @@ CLOUDFLEET_REGISTRY=registry.hub.docker.com
 
 EOF
 
-UPDATE_CRONTAB='0 4 * * * /opt/cloudfleet/engineroom/bin/upgrade-blimp.sh >> /opt/cloudfleet/data/logs/upgrade.log 2>&1'
+UPDATE_CRONTAB='0 4 * * * /opt/cloudfleet/engineroom/bin/upgrade-blimp.sh >> /opt/cloudfleet/data/logs/vagrant-upgrade.log 2>&1'
 
 echo $UPDATE_CRONTAB
 echo "$UPDATE_CRONTAB" | crontab -u root -

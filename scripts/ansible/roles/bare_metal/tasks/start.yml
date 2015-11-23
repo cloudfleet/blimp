@@ -1,5 +1,5 @@
 ---
 - name: start | upgrade & (re-)start
-  shell: "bin/upgrade-blimp.sh >> /opt/cloudfleet/data/logs/upgrade.log 2>&1"
+  shell: "bin/upgrade-blimp.sh >> /opt/cloudfleet/data/logs/ansible-upgrade.log 2>&1"
   args:
     chdir: "{{ blimp.engineroom.src }}"
