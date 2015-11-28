@@ -4,8 +4,8 @@
 #
 # ./format_usbs.sh <key device> <storage device>
 #
-# See also 
-#  
+# See also
+#
 # <https://github.com/cloudfleet/blimp-engineroom/blob/enable-crypt-upgrade/bin/cryptpart/wipe_disks.sh>.
 
 DIR=$( cd "$( dirname $0 )" && pwd )
@@ -48,8 +48,8 @@ w
     #     apt-get install dosfstools
     # mkfs.vfat ${KEY_DEVICE}1 -n ${KEY_PARTITION_LABEL}
     # mkfs.vfat ${STORAGE_DEVICE}1 -n ${STORAGE_PARTITION_LABEL}
-    mkfs.ext3 ${KEY_DEVICE}1 -L ${KEY_PARTITION_LABEL}
-    mkfs.ext3 ${STORAGE_DEVICE}1 -L ${STORAGE_PARTITION_LABEL}
+    mkfs.ext4 ${KEY_DEVICE}1 -L ${KEY_PARTITION_LABEL}
+    mkfs.ext4 ${STORAGE_DEVICE}1 -L ${STORAGE_PARTITION_LABEL}
 }
 
 wipe_drives
