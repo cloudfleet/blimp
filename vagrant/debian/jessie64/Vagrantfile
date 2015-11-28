@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "debian/jessie64"
+
+  #  A bit restrictive 
+  config.vm.network :private_network, ip: "192.168.111.222"
+
+  config.vm.provision "shell",
+                      inline: "sudo id"
+  
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.verbose = "v"
+    # XXX how to automatically generate hosts information?
+    #     as workaround we are specifying the config.vm.network explicitly in
+    #     "../../../scripts/ansible/hosts-vagrant"
+    # ansible.groups = {
+    #   "blimp" => ["blimp"],
+    #   "all_groups:children" => ["blimp"]
+    # }
+    ansible.sudo=true
+    ansible.inventory_path="../../../scripts/ansible/hosts-vagrant"
+    ansible.playbook = "../../../scripts/ansible/blimp-first-time.yml"
+  end
+end

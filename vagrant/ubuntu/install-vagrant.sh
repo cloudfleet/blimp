@@ -1,4 +1,6 @@
 #! /bin/bash
+# NOT WORKING
+# Ubuntu specific provisioning 
 export CLOUDFLEET_DOMAIN=$1
 export CLOUDFLEET_SECRET=$2
 
