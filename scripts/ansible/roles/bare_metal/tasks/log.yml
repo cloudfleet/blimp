@@ -1,6 +1,11 @@
 ---
-- name: log | create the log folder
+- name: log | Create the cloudfleet log folder
   command: "mkdir -p /opt/cloudfleet/data/logs"
+  tags:
+    - blimp
+    - log
+- name: var | Create the cloudfleet var folder
+  command: "mkdir -p /opt/cloudfleet/var"
   tags:
     - blimp
     - log
