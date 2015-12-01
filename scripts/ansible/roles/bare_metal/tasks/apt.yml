@@ -8,9 +8,10 @@
    - python-pip
    - cryptsetup
    - btrfs-tools
-   # - dosfstools # necessary for mkfs.vfat which we don't use for now
+   - dosfstools
+
    # TODO: check if we need something for mkfs.ext4
-   # - docker.io # downloaded from Hypriot, since the deb package not present
+   # - Not docker.io # downloaded from Hypriot, since the deb package not present
    # - python-docker # same as above
   tags:
    - blimp
