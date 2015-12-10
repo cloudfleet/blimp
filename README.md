@@ -10,15 +10,36 @@ and auto-update a set of [Docker](www.docker.com) containers which
 make up the Blimp's functionality.
 
 Follow these steps.  Instructions that are specific to a RPI2 install
-are marked *[RPI2]*, those via Cubox are *[CUBOX]*
+are marked *[RPI2]*, those via Cubox are *[CUBOX]*. We recommend using
+the RPI2 procedure if possible, due to better Linux kernel support.
+
+The instructions can generally be performed from any Unixy machine.
+*[Linux]* or *[OS X]* labels are used where commands differ.
 
 ## Debian arm32 setup
+
+*TODO: move this procedure to a separate .md file, since the other sections
+should work for most Debian-based Linux machines (including amd64 VMs).*
 
 The first step is to install Debian on your device. Current hardware tested
 includes arm32 Cubox or Raspberry Pi 2 Model B devices.
 We recommend using the Raspberry Pi 2.
 
-### Cubox Image
+### Download the image
+
+As a first step, download the image. For an appropriate link, see below.
+Your working path, url and filename might vary,
+but the procedure goes something like:
+
+    BLIMPWORK=~/Downloads
+    mkdir -p $BLIMPWORK
+    cd $BLIMPWORK
+    wget https://images.collabora.co.uk/rpi2/jessie-rpi2-20150705.img.gz
+    gunzip jessie-rpi2-20150705.img.gz
+
+Make sure you use the correct filename for the remaining steps.
+
+#### Cubox Image
 *[CUBOX]*
 
 Version 2.6 of the unofficial Cubox Debian images is known to work.
@@ -28,7 +49,7 @@ TODO: explain the luks drivers
 [patch](http://blog.soutade.fr/post/2015/08/luks-on-cubox-imx6-platform.html)
 (or include this in our scripts).
 
-### Raspberry Pi 2 image
+#### Raspberry Pi 2 image
 *[RPi2]* For the Raspberry Pi 2, supported Debian images are documented
 [here](http://sjoerd.luon.net/posts/2015/02/debian-jessie-on-rpi2/).
 
@@ -37,6 +58,65 @@ Download one of
 
 The <https://images.collabora.co.uk/rpi2/jessie-rpi2-20150705.img.gz>
 image is known to work.
+
+### Find out where the SD card is
+
+Plug in your micro SD card you want to use for the ARM device.
+
+*[OS X]*
+First issue a
+```
+    diskutil list
+```
+Then insert the SD card
+```
+    diskutil list
+```
+and compare the two entries.
+
+You're looking for the entry of the form /dev/diskN where 'N' is a
+number.  If the SD disk is pre-formatted, it should show up with a
+'Windows_FAT_32' partition type.
+
+### Copy the image to the SD card
+
+*[OS X]*
+After you have determined the correct disk device, you'll need to
+umount the media.
+
+If the SD card is the only mounted msdos partition,
+```
+    mount | grep msdos | awk  '{print $1}'
+```
+should show you the partition to unmount.
+```
+    diskutil unmountDisk /dev/<disk-with-partition>
+```
+Copy the image (on BSD/OS X):
+```
+    sudo dd bs=1m if=$BLIMPWORK/<image-raw-or-img> of=/dev/<device>
+```
+Using '/dev/rdiskN' rather than '/dev/diskN' should be quite a bit faster.
+
+Check progress with `Ctrl+t`.
+
+*Apparently, using
+[bmap-tools](http://git.infradead.org/users/dedekind/bmap-tools.git)
+is supposed to be much faster, as it doesn't copy zeros.*
+
+Don't forget to unmount when it's done.
+```
+    diskutil unmountDisk /dev/<disk-with-partition>
+```
+
+*[Linux]*
+It's `bs=1M` if you're on Linux for dd:
+```
+    sudo dd bs=1M if=$BLIMPWORK/<image-raw-or-img> of=/dev/<device>
+```
+
+When you're done, plug the SD card in your ARM device and boot it up.
+
 
 ## Find out the IP address
 
@@ -60,7 +140,8 @@ password.
 ## Software prerequirements
 *[RPI2]*
 
-Install the minimal packages on the blimp:
+Install the minimal packages on the Blimp (a requirement to run the Ansible
+playbooks on it in a later stage):
 
         apt-get install python
 
@@ -118,10 +199,10 @@ deployments with `--skip-tags=dev`. To speed things up on subsequent runs,
 you can do `--skip-tags=packages`.
 
 
-# Reboot the blimp
+# Reboot the Blimp
 
-  After Ansible completes, reboot the blimp, so that it upgrades
-  itself and starts all the Docker containers
+After Ansible completes, reboot the Blimp, so that it upgrades
+itself and starts all the Docker containers
 
         reboot
 
@@ -153,7 +234,7 @@ Copy <file:scripts/ansible/hosts-remote.example> to <file:scripts/ansible/hosts-
 
 ## Deprecated: this manual workflow is not current any more, while we're transitioning to keeping all the scripts in blimp-engineroom.**
 
-To run the blimp on an ARM device, install the dependencies:
+To run the Blimp on an ARM device, install the dependencies:
 
     ./scripts/install.sh
 
