@@ -46,6 +46,14 @@
     - packages
   when: ansible_architecture == "armv7l"
 
+# Hypriot started offering their own Debian package mirror which might
+# be nicer for long-term upgrades. To add do:
+#
+#     apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 37BBEE3F7AD95B3F
+#     dpkg -r docker-hypriot # delete the old .deb
+#     apt-get install docker-compose # remove it meta-compose's dependencies
+#     apt-get install docker-hypriot
+
 # Installing from a Debian repository
 #####################################
 
