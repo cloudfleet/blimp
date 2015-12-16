@@ -9,6 +9,8 @@
    - cryptsetup
    - btrfs-tools
    - dosfstools
+   - rsync
+   - freebsd-buildutils
 
    # TODO: check if we need something for mkfs.ext4
    # - Not docker.io # downloaded from Hypriot, since the deb package not present
