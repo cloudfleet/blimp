@@ -1,6 +1,7 @@
 - hosts: cloudfleet
+  # to make changes for Vagrant VMs, please use blimp-first-time-vagrant.yml
   vars_files:
-    - cloudfleet-vagrant.yml
+    - cloudfleet.yml
 
   roles:
     - bare_metal

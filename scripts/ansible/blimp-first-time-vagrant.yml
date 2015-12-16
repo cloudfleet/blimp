@@ -1,0 +1,6 @@
+- hosts: cloudfleet
+  vars_files:
+    - cloudfleet-vagrant.yml
+
+  roles:
+    - bare_metal
