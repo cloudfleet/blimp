@@ -4,12 +4,38 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "debian/jessie64"
 
-  #  A bit restrictive 
+  # XXX use a known, static IP to "rendevous" with the Ansible
+  # provisioning below
   config.vm.network :private_network, ip: "192.168.111.222"
 
+  # DEBUG test
   config.vm.provision "shell",
                       inline: "sudo id"
-  
+
+  # Create volumes to provide block devices to run encrypte disk setup upon
+  config.vm.provider "virtualbox" do |vb|
+    key_disk = ".vagrant/machines/default/virtualbox/device-key" + ".vdi"
+    unless File.exist?(key_disk) 
+      vb.customize ['createhd', '--filename', key_disk, '--size', 8 * 1024] 
+    end 
+    vb.customize ['storageattach', :id,
+                  '--storagectl', 'SATA Controller',
+                  '--port', 1,
+                  '--device', 0,
+                  '--type', 'hdd',
+                  '--medium', key_disk] 
+
+    storage_disk = ".vagrant/machines/default/virtualbox/device-str" + ".vdi"
+    unless File.exist?(storage_disk) 
+      vb.customize ['createhd', '--filename', storage_disk, '--size', 32 * 1024] 
+    end 
+    vb.customize ['storageattach', :id,
+                  '--storagectl', 'SATA Controller',
+                  '--port', 2,
+                  '--device', 0,
+                  '--type', 'hdd',
+                  '--medium', storage_disk]
+  end
 
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
