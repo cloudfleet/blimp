@@ -5,7 +5,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "debian/jessie64"
 
   # XXX use a known, static IP to "rendevous" with the Ansible
-  # provisioning below
+  # provisioning below.  The current value is randomly chosen.
   config.vm.network :private_network, ip: "192.168.111.222"
 
   # DEBUG test
@@ -47,7 +47,7 @@ Vagrant.configure(2) do |config|
     #   "all_groups:children" => ["blimp"]
     # }
     ansible.sudo=true
-    ansible.inventory_path="../../../scripts/ansible/hosts-vagrant"
-    ansible.playbook = "../../../scripts/ansible/blimp-first-time.yml"
+    ansible.inventory_path="../../scripts/ansible/hosts-vagrant"
+    ansible.playbook = "../../scripts/ansible/blimp-first-time.yml"
   end
 end
